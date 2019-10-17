@@ -13,7 +13,7 @@ const history = createBrowserHistory()
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
+    
         <div history={history}>
         <Switch>
           <Route path="/" exact component={Home}/>
@@ -24,7 +24,7 @@ function App() {
           <Application />
         </Switch>
         </div>
-      </header>
+     
     </div>
   );
 }
