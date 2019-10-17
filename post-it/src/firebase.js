@@ -2,16 +2,6 @@ import firebase from 'firebase/app';
 import 'firebase/firestore';
 require('dotenv').config();
 
-// import {
-//     API_KEY,
-//     AUTH_DOMAIN,
-//     DATABASE_URL,
-//     PROJECT_ID,
-//     MESSAGE_SENDER_ID,
-//     APP_ID
-// } from 'dotenv';
-
-
 const firebaseConfig = {
     apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
     authDomain: `${process.env.REACT_APP_FIREBASE_PROJECT_ID}.firebaseapp.com`,
