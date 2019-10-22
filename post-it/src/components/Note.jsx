@@ -1,18 +1,54 @@
 import React from 'react';
 import { firestore } from '../firebase';
+import styled from 'styled-components';
 
-const Note = () => {
+const NoteStyled = styled.div`
+    padding: 15px 25px;
+    width: 250px;
+    height: 150px;
+    border: 1px solid black;
+    background-color: yellow;
+    margin-top: 15px;
+    cursor: pointer;
+    margin-bottom: 15px;
+`;
 
-    // const noteRef = firestore.doc(`notes/${id}`);
-    // const remove = () => noteRef.delete();
-    // const like = () => noteRef.update({ likes: like + 1 });
+const Note = ({ id, content, likes }) => {
+    
+    const noteRef = firestore.doc(`notes/${id}`);
+    const remove = () => noteRef.delete();
+    const like = () => noteRef.update({ likes: likes + 1 });
+
+    const dragStart = e => {
+        const target = e.target;
+        e.dataTransfer.setData('card_id', target.id);
+
+        setTimeout(() => {
+            target.style.display = 'none';
+        }, 0);
+
+    }
+
+    const dragOver = e => {
+        e.stopPropagation();
+    }
 
     return ( 
         <>
-            {/* <button className="delete" onClick={remove}>X</button>
-            <button className="like" onClick={like}>Like</button> */}
+            <NoteStyled
+                id={id}
+                draggable= {true}
+                onDragStart={dragStart}
+                onDragOver={dragOver}
+            >
+                <p>{content}</p>
+                <p>{likes}</p>
+                <button className="delete" onClick={remove}>X</button>
+                <button className="like" onClick={like}>Like</button>
+            </NoteStyled>
         </>
      );
-}
+};
+
  
 export default Note;

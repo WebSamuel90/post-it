@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 import Board from '../components/Board';
-import Postit from '../components/Postit';
+// import Postit from '../components/Postit';
+
+import { firestore } from '../firebase';
+import Notes from "../components/Notes";
+import { collectIdsAndDocs } from '../utilities';
 
 const BoardWrapperStyled = styled.div`
     display: flex;
@@ -22,36 +26,47 @@ const PostitWrapperStyled = styled.div`
     padding: 15px;
 `;
 
+class Host extends Component {
+
+    state = {
+        notes: [],
+      }
+
+      unsubscribe = null;
+
+      componentDidMount = async () => {
+        this.unsubscribe = firestore.collection('notes').onSnapshot(snapshot => {
+            const notes = snapshot.docs.map(collectIdsAndDocs);
+            this.setState({ notes });
+        });
+      };
+
+      componentWillUnmount = () => {
+          this.unsubscribe();
+      };
+
+    render() {
+        const {notes} = this.state;
 
 
-const Host = (props) => {
-    return (
+        return (
             <>
-            <h1>Host page</h1>
+                <h1>Host page</h1>
                 <BoardWrapperStyled>
                     <Board id='board-1'></Board>
                 </BoardWrapperStyled>
 
                 <PostitWrapperStyled>
-                    <Postit id='postit-1' draggable='true'>
-                        <p>Card one</p>
-                    </Postit>
-                    <Postit id='postit-2' draggable='true'>
-                        <p>Card two</p>
-                    </Postit>
-                    <Postit id='postit-3' draggable='true'>
-                        <p>Card three</p>
-                    </Postit>
-                    <Postit id='postit-4' draggable='true'>
-                        <p>Card four</p>
-                    </Postit>
+                    <Notes notes={notes} />
                 </PostitWrapperStyled>
 
 
             </>
-        
+
         );
+
     }
+}
 
 
 export default Host;

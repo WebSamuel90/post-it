@@ -4,25 +4,24 @@ import Notes from "./Notes";
 import collectIdsAndDocs from '../utilities';
 
 class Application extends Component {
-    state = {  }
+    state = { 
+        notes: [],
+     }
 
     unsubscribe = null;
 
     componentDidMount = async () => {
+        const snapshot = await firestore.collection('notes').get();
 
-        // snapshot.forEach(doc => {
-        //     const id = doc.id;
-        //     const data = doc.data();
+        const notes = snapshot.docs.map(doc => {return { id: doc.id, ...doc.data() }; });
 
-        //     console.log({ id, data });
-            
+        this.setState({ notes });
+        
+
+        // this.unsubscribe = firestore.collection('notes').onSnapshot(snapshot => {
+        //     const notes = snapshot.docs.map(collectIdsAndDocs);
+        //     this.setState({ notes });
         // });
-
-        this.unsubscribe = firestore.collection('notes').onSnapshot(snapshot => {
-            const notes = snapshot.docs.map(collectIdsAndDocs);
-            this.setState({ notes });
-        });
-
     };
 
     componentWillUnmount = () => {
@@ -30,6 +29,8 @@ class Application extends Component {
     };
 
     render() { 
+        const { notes } = this.state;
+        
         return ( 
             <>
                 <Notes notes={this.notes}/>
