@@ -5,10 +5,9 @@ import Postit from '../components/Postit';
 
 const BoardWrapperStyled = styled.div`
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     width: 100%;
-    max-width: 768px;
     height: 500px;
     overflow: hidden;
     margin: 0 auto;
@@ -21,7 +20,6 @@ const PostitWrapperStyled = styled.div`
     flex-direction: row;
     justify-content: flex-end;
     padding: 15px;
-
 `;
 
 
@@ -31,16 +29,25 @@ const Host = (props) => {
             <>
             <h1>Host page</h1>
                 <BoardWrapperStyled>
-            
                     <Board id='board-1'></Board>
-            
                 </BoardWrapperStyled>
 
                 <PostitWrapperStyled>
                     <Postit id='postit-1' draggable='true'>
                         <p>Card one</p>
                     </Postit>
+                    <Postit id='postit-2' draggable='true'>
+                        <p>Card two</p>
+                    </Postit>
+                    <Postit id='postit-3' draggable='true'>
+                        <p>Card three</p>
+                    </Postit>
+                    <Postit id='postit-4' draggable='true'>
+                        <p>Card four</p>
+                    </Postit>
                 </PostitWrapperStyled>
+
+
             </>
         
         );

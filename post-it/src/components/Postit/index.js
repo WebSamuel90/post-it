@@ -1,17 +1,48 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
+
+
 
 
 const PostitStyled = styled.div`
     padding: 15px 25px;
+    box-shadow: 2px 4px 6px #444;
     width: 250px;
     height: 150px;
-    border: 1px solid black;
-    background-color: yellow;
-    margin-top: 15px;
+    margin: 10px;
     cursor: pointer;
-    margin-bottom: 15px;
+   
+    @media screen and (max-width: 768px) {
+        width: 250px;
+        height: 250px;
+    }
 `;
+
+// class Postit extends Component {
+
+//     drag = (e) => {
+//         e.dataTransfer.setData('transfer', e.target.id);
+//     }
+
+//     noAllowDrop = (e) => {
+//         e.stopPropagation();
+//     }
+
+//     render() { 
+//         return ( 
+//             <PostitStyled id={this.props.id} draggable='true' onDragStart={this.drag} onDragOver={this.noAllowDrop} >
+//                 {this.props.children}
+//             </PostitStyled>
+//          );
+//     }
+// }
+ 
+//     Postit.propTypes = {
+//         id: propTypes.string,
+//         children: propTypes.node,
+// }
+// export default Postit;
+
 
 function Postit (props) {
 
@@ -29,16 +60,23 @@ function Postit (props) {
         e.stopPropagation();
     }
 
+
     return (
-        <PostitStyled
-            id={props.id}
-            className={props.className}
-            draggable= {props.draggable}
-            onDragStart={dragStart}
-            onDragOver={dragOver}
-        >
-            { props.children }
-        </PostitStyled>
+            
+            <PostitStyled
+                id={props.id}
+                // className={props.className}
+                draggable= {props.draggable}
+                onDragStart={dragStart}
+                onDragOver={dragOver}
+                {...props}
+            >  
+            
+                { props.children }
+            </PostitStyled>
+
+
+       
     )
 }
 
