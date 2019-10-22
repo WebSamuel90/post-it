@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 import Board from '../components/Board';
-import Postit from '../components/Postit';
+// import Postit from '../components/Postit';
+
+import { firestore } from '../firebase';
+import Notes from "../components/Notes";
+import { collectIdsAndDocs } from '../utilities';
 
 const BoardWrapperStyled = styled.div`
     display: flex;
@@ -24,27 +28,45 @@ const PostitWrapperStyled = styled.div`
 
 `;
 
+class Host extends Component {
 
+    state = { 
+        notes: [],
+      }
+    
+      unsubscribe = null;
+    
+      componentDidMount = async () => {
+        this.unsubscribe = firestore.collection('notes').onSnapshot(snapshot => {
+            const notes = snapshot.docs.map(collectIdsAndDocs);
+            this.setState({ notes });
+        });
+      };
+    
+      componentWillUnmount = () => {
+          this.unsubscribe();
+      };
 
-const Host = (props) => {
-    return (
+    render() {
+        const {notes} = this.state;
+        
+
+        return (
             <>
-            <h1>Host page</h1>
+                <h1>Host page</h1>
                 <BoardWrapperStyled>
-            
                     <Board id='board-1'></Board>
-            
                 </BoardWrapperStyled>
 
                 <PostitWrapperStyled>
-                    <Postit id='postit-1' draggable='true'>
-                        <p>Card one</p>
-                    </Postit>
+                    <Notes notes={notes} />
                 </PostitWrapperStyled>
             </>
-        
+            
         );
+
     }
+}
 
 
 export default Host;

@@ -1,5 +1,4 @@
 import React from 'react';
-import Application from './components/Application';
 import { Route, Switch } from "react-router-dom";
 import { createBrowserHistory } from 'history';
 import './App.css';
@@ -10,7 +9,7 @@ import User from './views/user';
 
 const history = createBrowserHistory()
 
-function App() {
+const App = () => {
   return (
     <div className="App">
     
@@ -19,9 +18,6 @@ function App() {
           <Route path="/" exact component={Home}/>
           <Route path="/host" exact component={Host}/>
           <Route path="/user" exact component={User}/>
-    
-         
-          <Application />
         </Switch>
         </div>
      
