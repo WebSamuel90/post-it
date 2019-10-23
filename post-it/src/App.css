@@ -5,6 +5,7 @@
 
 body {
   background-color: #FFF;
+  transform: scale(0.5);
 }
 
 .App {
