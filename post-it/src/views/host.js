@@ -1,8 +1,14 @@
-import React, {useState} from 'react';
+import Lines from '../components/ConnectLines';
+
+import React, { Component } from 'react';
 import styled from 'styled-components';
 import Board from '../components/Board';
-import Postit from '../components/Postit';
-import Lines from '../components/ConnectLines';
+// import Postit from '../components/Postit';
+
+import { firestore } from '../firebase';
+import Notes from "../components/Notes";
+import { collectIdsAndDocs } from '../utilities';
+
 
 // const BoardWrapperStyled = styled.div`
 //     display: flex;
@@ -30,27 +36,53 @@ const PostitWrapperStyled = styled.div`
     }
 `;
 
+class Host extends Component {
+  //  const [backgroundColor, setBackgroundColor] = useState(colors.Yellow)
+    state = { 
+        notes: [],
+      }
+    
+      unsubscribe = null;
+    
+      componentDidMount = async () => {
+        this.unsubscribe = firestore.collection('notes').onSnapshot(snapshot => {
+            const notes = snapshot.docs.map(collectIdsAndDocs);
+            this.setState({ notes });
+        });
+      };
+    
+      componentWillUnmount = () => {
+          this.unsubscribe();
+      };
 
-const colors = {
-    Green: '#39D1B4',
-    Yellow:'#ffc',
-    Pink: '#FFB6C1',
-    Blue: '#ADD8E6'
-}
 
-const Host = (props) => {
-    const [backgroundColor, setBackgroundColor] = useState(colors.Yellow)
+// const colors = {
+  //  Green: '#39D1B4',
+   // Yellow:'#ffc',
+ //   Pink: '#FFB6C1',
+  //  Blue: '#ADD8E6'
+// }
 
-    return (
+    render() {
+        const {notes} = this.state;
+        
+        return (
             <>
-            <h1>Host page</h1>
-            
+                <h1>Host page</h1>
+                <BoardWrapperStyled>
+
                     <Board id='board-1'></Board>
 
-               
+                </BoardWrapperStyled>
+          
                 <PostitWrapperStyled>
-                    <Postit id='postit-1' draggable='true' style={{ backgroundColor: backgroundColor }}>
-                    
+
+                   // <Postit id='postit-1' draggable='true' style={{ backgroundColor: backgroundColor }}>
+                  
+                    <Notes notes={notes} />
+
+                    {/* <Postit id='postit-1' draggable='true'>
+
                         <p>Card one</p>
                     </Postit>
                     <Postit id='postit-2' draggable='true' style={{ backgroundColor: backgroundColor }}>
@@ -64,17 +96,24 @@ const Host = (props) => {
                     </Postit>
                     <Postit id='postit-5' draggable='true' style={{ backgroundColor: backgroundColor }}>
                         <p>Card four</p>
+
                     </Postit>
                     <Postit id='postit-6' draggable='true' style={{ backgroundColor: backgroundColor }}>
                         <p>Card four</p>
                     </Postit>
      
+
+                    </Postit> */}
+
+
                 </PostitWrapperStyled>
             
             </>
-        
+            
         );
+
     }
+}
 
 
 export default Host;
