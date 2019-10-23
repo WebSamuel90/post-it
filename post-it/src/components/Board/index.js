@@ -3,12 +3,22 @@ import styled from 'styled-components';
 
 
 const BoardStyled = styled.div`
-    dislay: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: auto auto auto;
     width: 100%;
     height: 400px;
-    background-color: grey;
+    background-color: #2196F3;
     padding: 15px;
+
+    .grid-item {
+        background-color: rgba(255, 255, 255, 0.8);
+        border: 1px solid rgba(0, 0, 0, 0.8);
+        padding: 20px;
+        font-size: 30px;
+        text-align: center;
+    }
+
+
 `;
 
 // class Board extends Component {
@@ -71,6 +81,16 @@ function Board (props) {
             onDrop={drop}
             onDragOver={dragOver}
         >
+            <div className="grid-item">1</div>
+            <div className="grid-item">2</div>
+            <div className="grid-item">3</div>
+            <div className="grid-item">4</div>
+            <div className="grid-item">5</div>
+            <div className="grid-item">6</div>
+            <div className="grid-item">7</div>
+            <div className="grid-item">8</div>
+            <div className="grid-item">9</div>
+
             { props.children } 
 
         </BoardStyled>

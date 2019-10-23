@@ -7,16 +7,16 @@ import { firestore } from '../firebase';
 import Notes from "../components/Notes";
 import { collectIdsAndDocs } from '../utilities';
 
-const BoardWrapperStyled = styled.div`
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: 100%;
-    height: 500px;
-    overflow: hidden;
-    margin: 0 auto;
-    padding: 15px;
-`;
+// const BoardWrapperStyled = styled.div`
+//     display: flex;
+//     flex-direction: row;
+//     align-items: center;
+//     width: 100%;
+//     height: 500px;
+//     overflow: hidden;
+//     margin: 25px;
+//     padding: 15px;
+// `;
 
 const PostitWrapperStyled = styled.div`
     display: flex;
@@ -24,6 +24,13 @@ const PostitWrapperStyled = styled.div`
     flex-direction: row;
     justify-content: flex-end;
     padding: 15px;
+
+    @media screen and (max-width: 992px) {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
 `;
 
 class Host extends Component {
@@ -54,12 +61,11 @@ class Host extends Component {
                 <h1>Host page</h1>
                 <BoardWrapperStyled>
                     <Board id='board-1'></Board>
-                </BoardWrapperStyled>
+
 
                 <PostitWrapperStyled>
                     <Notes notes={notes} />
                 </PostitWrapperStyled>
-
 
             </>
 

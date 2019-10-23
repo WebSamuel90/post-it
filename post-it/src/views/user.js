@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState } from 'react';
 import Postit from '../components/Postit';
 import Button from '../components/Button';
 import styled from 'styled-components';
@@ -21,9 +21,10 @@ const WrapperStyled = styled.div`
     }
 `;
 
+
 const colors = {
     Green: '#39D1B4',
-    Yellow:'#FFD712',
+    Yellow:'#ffc',
     Pink: '#FFB6C1',
     Blue: '#ADD8E6'
 
@@ -33,44 +34,25 @@ const colors = {
 const User = () => {
     const [backgroundColor, setBackgroundColor] = useState(colors.Yellow)
     
-    console.log(backgroundColor);
-    
-    
-
-//    const handleUpdate = (event) => {
-//         setUpdate(event.target.value);
-//     }
-
-//     const updateColor = (event) => {
-//         event.preventDefault();
-//         setColor(update);
-//         setUpdate([]);
-//     }
-
 
     return (
             <>
                 <h1>User page</h1>
-                {console.log(backgroundColor)
-                }
-
+            
                 <WrapperStyled>
                 <Postit id="postit" style={{ backgroundColor: backgroundColor }}>
-
                     <h1>{backgroundColor}</h1>
                     
                 </Postit>
-                
-                <Button name="green" onClick={() => setBackgroundColor(colors.Green)}>
-                    
-                    </Button>
-                    <Button name="pink" onClick={() => setBackgroundColor(colors.Pink)}>
-                    
-                    </Button>
-                    <Button name="blue" onClick={() => setBackgroundColor(colors.Blue)}>
-                    
-                    </Button>
+                    <div>
+                    <Button name="green" onClick={() => setBackgroundColor(colors.Green)}></Button>
+                    <Button name="pink" onClick={() => setBackgroundColor(colors.Pink)}></Button>
+                    <Button name="blue" onClick={() => setBackgroundColor(colors.Blue)}></Button>
+                    <Button name="yellow" onClick={() => setBackgroundColor(colors.Yellow)}></Button>
+                    </div>
+
                 </WrapperStyled>
+            
             </>
         
         );
