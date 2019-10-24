@@ -14,21 +14,15 @@ const ButtonStyled = styled.button `
     }
 `;
 
-
-
 function Button (props) {
 
         return ( 
-           
                 <ButtonStyled 
                     {...props}
                 >
                 
                 {props.name}
                 </ButtonStyled>
-            
-         
-
          );
     }
 
