@@ -3,7 +3,7 @@ import { Route, Switch } from "react-router-dom";
 import { createBrowserHistory } from 'history';
 import './App.css';
 
-import Home from './views/home';
+import Home from './views';
 import Host from './views/host';
 import User from './views/user';
 

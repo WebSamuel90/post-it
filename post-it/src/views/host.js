@@ -87,7 +87,7 @@ class Host extends Component {
           
                 <PostitWrapperStyled>
 
-                   // <Postit id='postit-1' draggable='true' style={{ backgroundColor: backgroundColor }}>
+                   <Postit id='postit-1' draggable='true' style={{ backgroundColor: backgroundColor }}/>
                   
                     <Notes notes={notes} />
 
