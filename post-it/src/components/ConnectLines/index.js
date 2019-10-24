@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { SteppedLineTo, Line } from 'react-lineto';
+// import { SteppedLineTo, Line } from 'react-lineto';
 
 
 const DivStyled = styled.div`
@@ -29,8 +29,8 @@ function Lines(props) {
             <DivStyled className="A">Element A</DivStyled>
             <DivStyled2 className="B">Element B</DivStyled2>
       
-            <Line x0={0} y0={0} x1={100} y1={100} />
-            <SteppedLineTo from="A" to="B" orientation="h" />
+            {/* <Line x0={0} y0={0} x1={100} y1={100} /> */}
+            {/* <SteppedLineTo from="A" to="B" orientation="h" /> */}
         
         </div>
     );
