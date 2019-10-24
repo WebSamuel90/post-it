@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { firestore } from '../firebase';
+import { firestore, auth } from '../firebase';
+
 
 class AddNote extends Component {
     state = { content: '' }
@@ -9,15 +10,27 @@ class AddNote extends Component {
         this.setState({ [name]: value });
     };
 
-    handleSubmit = event => {
+    handleSubmit = async event => {
         event.preventDefault();
 
         const { content } = this.state;
+        // const { uid, displayName, email } = auth.currentUser || {};
         
-        const note = { content }
+        const note = {
+            content,
+            // user: {
+            //     uid,
+            //     displayName,
+            //     email,
+            // }
+        };
         
-        firestore.collection('notes').add(note);
-        // firestore.collection('notes').doc(note.id).set(note);
+        try {
+            firestore.collection('notes').add(note);
+            // firestore.collection('notes').doc(note.id).set(note);
+        } catch (error) {
+            console.error(error);
+        };
 
         this.setState({ content: '' });
     }

@@ -1,23 +1,26 @@
+import Lines from '../components/ConnectLines';
+
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import Board from '../components/Board';
+// import Postit from '../components/Postit';
 
-import { firestore } from '../firebase';
+import { firestore, auth, createUserProfileDocument } from '../firebase';
 import Notes from "../components/Notes";
 import { collectIdsAndDocs } from '../utilities';
+import Authentication from '../components/Authentication';
 
 
-const BoardWrapperStyled = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-    margin: 25px;
-    padding: 15px;
-    transform: scale(0.5);
-`;
+// const BoardWrapperStyled = styled.div`
+//     display: flex;
+//     flex-direction: row;
+//     align-items: center;
+//     width: 100%;
+//     height: 500px;
+//     overflow: hidden;
+//     margin: 25px;
+//     padding: 15px;
+// `;
 
 const PostitWrapperStyled = styled.div`
     display: flex;
@@ -28,45 +31,64 @@ const PostitWrapperStyled = styled.div`
 
     @media screen and (max-width: 992px) {
         width: 100%;
-        display: flex;
+        display: flex; 
         flex-direction: row;
         justify-content: center;
     }
 `;
 
 class Host extends Component {
-
-    state = {
+  //  const [backgroundColor, setBackgroundColor] = useState(colors.Yellow)
+    state = { 
         notes: [],
-      }
-
-      unsubscribe = null;
-
+        user: null
+    }
+    
+      unsubscribeFromFirestore = null;
+      unsubscribeFromAuth = null;
+    
       componentDidMount = async () => {
-        this.unsubscribe = firestore.collection('notes').onSnapshot(snapshot => {
+        this.unsubscribeFromFirestore = firestore.collection('notes').onSnapshot(snapshot => {
             const notes = snapshot.docs.map(collectIdsAndDocs);
             this.setState({ notes });
         });
+
+        this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
+            const user = await createUserProfileDocument(userAuth);
+            
+            this.setState({ user });
+        });
+      };
+    
+      componentWillUnmount = () => {
+          this.unsubscribeFromFirestore();
       };
 
-      componentWillUnmount = () => {
-          this.unsubscribe();
-      };
+
+// const colors = {
+  //  Green: '#39D1B4',
+   // Yellow:'#ffc',
+ //   Pink: '#FFB6C1',
+  //  Blue: '#ADD8E6'
+// }
 
     render() {
-        const {notes} = this.state;
-
-
+        const {notes, user} = this.state;
+        
         return (
             <>
                 <h1>Host page</h1>
+                <Authentication />
                 <BoardWrapperStyled>
 
-                    <Board id='board-1' />
+                    <Board id='board-1'></Board>
 
-
+                </BoardWrapperStyled>
+          
                 <PostitWrapperStyled>
 
+                   <Postit id='postit-1' draggable='true' style={{ backgroundColor: backgroundColor }}/>
+                  
                     <Notes notes={notes} />
 
                     {/* <Postit id='postit-1' draggable='true'>
@@ -89,15 +111,15 @@ class Host extends Component {
                     <Postit id='postit-6' draggable='true' style={{ backgroundColor: backgroundColor }}>
                         <p>Card four</p>
                     </Postit>
-
+     
 
                     </Postit> */}
 
+
                 </PostitWrapperStyled>
-
-                </BoardWrapperStyled>
+            
             </>
-
+            
         );
 
     }
