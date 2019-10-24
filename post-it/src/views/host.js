@@ -11,16 +11,16 @@ import { collectIdsAndDocs } from '../utilities';
 import Authentication from '../components/Authentication';
 
 
-// const BoardWrapperStyled = styled.div`
-//     display: flex;
-//     flex-direction: row;
-//     align-items: center;
-//     width: 100%;
-//     height: 500px;
-//     overflow: hidden;
-//     margin: 25px;
-//     padding: 15px;
-// `;
+const BoardWrapperStyled = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+    margin: 25px;
+    padding: 15px;
+`;
 
 const PostitWrapperStyled = styled.div`
     display: flex;
@@ -38,7 +38,7 @@ const PostitWrapperStyled = styled.div`
 `;
 
 class Host extends Component {
-  //  const [backgroundColor, setBackgroundColor] = useState(colors.Yellow)
+//    const [backgroundColor, setBackgroundColor] = useState(colors.Yellow)
     state = { 
         notes: [],
         user: null
@@ -87,7 +87,7 @@ class Host extends Component {
           
                 <PostitWrapperStyled>
 
-                   <Postit id='postit-1' draggable='true' style={{ backgroundColor: backgroundColor }}/>
+                   {/* <Postit id='postit-1' draggable='true' style={{ backgroundColor: backgroundColor }}/> */}
                   
                     <Notes notes={notes} />
 
