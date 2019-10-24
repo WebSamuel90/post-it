@@ -3,23 +3,23 @@ import Lines from '../components/ConnectLines';
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import Board from '../components/Board';
-// import Postit from '../components/Postit';
 
 import { firestore } from '../firebase';
 import Notes from "../components/Notes";
 import { collectIdsAndDocs } from '../utilities';
 
 
-// const BoardWrapperStyled = styled.div`
-//     display: flex;
-//     flex-direction: row;
-//     align-items: center;
-//     width: 100%;
-//     height: 500px;
-//     overflow: hidden;
-//     margin: 25px;
-//     padding: 15px;
-// `;
+const BoardWrapperStyled = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    margin: 25px;
+    padding: 15px;
+    transform: scale(0.5);
+`;
 
 const PostitWrapperStyled = styled.div`
     display: flex;
@@ -71,13 +71,10 @@ class Host extends Component {
                 <h1>Host page</h1>
                 <BoardWrapperStyled>
 
-                    <Board id='board-1'></Board>
+                    <Board id='board-1' />
 
-                </BoardWrapperStyled>
           
                 <PostitWrapperStyled>
-
-                   // <Postit id='postit-1' draggable='true' style={{ backgroundColor: backgroundColor }}>
                   
                     <Notes notes={notes} />
 
@@ -104,10 +101,10 @@ class Host extends Component {
      
 
                     </Postit> */}
-
-
+           
                 </PostitWrapperStyled>
-            
+
+                </BoardWrapperStyled>
             </>
             
         );

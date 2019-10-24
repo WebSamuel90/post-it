@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 const BoardStyled = styled.div`
     display: grid;
-    grid-template-columns: auto auto auto;
+    // grid-template-columns: auto auto auto;
     width: 100%;
     height: 400px;
     background-color: #2196F3;
@@ -17,8 +17,6 @@ const BoardStyled = styled.div`
         font-size: 30px;
         text-align: center;
     }
-
-
 `;
 
 // class Board extends Component {
@@ -80,16 +78,7 @@ function Board (props) {
             // className={props.className}
             onDrop={drop}
             onDragOver={dragOver}
-        >
-            <div className="grid-item">1</div>
-            <div className="grid-item">2</div>
-            <div className="grid-item">3</div>
-            <div className="grid-item">4</div>
-            <div className="grid-item">5</div>
-            <div className="grid-item">6</div>
-            <div className="grid-item">7</div>
-            <div className="grid-item">8</div>
-            <div className="grid-item">9</div>
+         >
 
             { props.children } 
 

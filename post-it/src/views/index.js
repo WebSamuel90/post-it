@@ -12,7 +12,7 @@ const WrapperStyled = styled.div`
 `;
 
 
-const Home = (props) => {
+const Home = () => {
     return (
             <>
                 <h1>Home page</h1>
