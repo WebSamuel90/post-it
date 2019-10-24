@@ -13,7 +13,7 @@ const NoteStyled = styled.div`
     margin-bottom: 15px;
 `;
 
-const Note = ({ id, content, likes }) => {
+const Note = ({ id, content, likes, user }) => {
     
     const noteRef = firestore.doc(`notes/${id}`);
     const remove = () => noteRef.delete();
@@ -43,8 +43,8 @@ const Note = ({ id, content, likes }) => {
             >
                 <p>{content}</p>
                 <p>{likes}</p>
-                <button className="delete" onClick={remove}>X</button>
                 <button className="like" onClick={like}>Like</button>
+                <button className="delete" onClick={remove}>X</button>
             </NoteStyled>
         </>
      );

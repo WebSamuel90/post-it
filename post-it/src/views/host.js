@@ -3,9 +3,10 @@ import styled from 'styled-components';
 import Board from '../components/Board';
 // import Postit from '../components/Postit';
 
-import { firestore } from '../firebase';
+import { firestore, auth, createUserProfileDocument } from '../firebase';
 import Notes from "../components/Notes";
 import { collectIdsAndDocs } from '../utilities';
+import Authentication from '../components/Authentication';
 
 const BoardWrapperStyled = styled.div`
     display: flex;
@@ -30,28 +31,36 @@ class Host extends Component {
 
     state = { 
         notes: [],
-      }
+        user: null
+    }
     
-      unsubscribe = null;
+      unsubscribeFromFirestore = null;
+      unsubscribeFromAuth = null;
     
       componentDidMount = async () => {
-        this.unsubscribe = firestore.collection('notes').onSnapshot(snapshot => {
+        this.unsubscribeFromFirestore = firestore.collection('notes').onSnapshot(snapshot => {
             const notes = snapshot.docs.map(collectIdsAndDocs);
             this.setState({ notes });
+        });
+
+        this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
+            const user = await createUserProfileDocument(userAuth);
+            
+            this.setState({ user });
         });
       };
     
       componentWillUnmount = () => {
-          this.unsubscribe();
+          this.unsubscribeFromFirestore();
       };
 
     render() {
-        const {notes} = this.state;
+        const {notes, user} = this.state;
         
-
         return (
             <>
                 <h1>Host page</h1>
+                <Authentication />
                 <BoardWrapperStyled>
                     <Board id='board-1'></Board>
                 </BoardWrapperStyled>
