@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import Postit from '../Postit';
-import Button from '../Button';
+import Postit from './Postit';
+import Button from './Button';
 import styled from 'styled-components';
-
 
 const ModalStyled = styled.div`
     width: 500px;
@@ -22,7 +21,6 @@ const ModalStyled = styled.div`
     flex-direction: column;
 `;
 
-
 const ButtonStyled = styled.div`
     margin-bottom: 15px; 
     padding: 3px 8px; 
@@ -41,9 +39,7 @@ const colors = {
     Yellow:'#ffc',
     Pink: '#FFB6C1',
     Blue: '#ADD8E6'
-
 }
-
 
 function Modal (props) {
     const [backgroundColor, setBackgroundColor] = useState(colors.Yellow)
@@ -65,13 +61,11 @@ function Modal (props) {
              </ModalStyled>
         );
 
-
         return (
             <>
                 {dialog}
             </>
           );
     };
-
 
 export default Modal;
