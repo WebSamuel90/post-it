@@ -1,5 +1,3 @@
-import Lines from '../components/ConnectLines';
-
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import Board from '../components/Board';
@@ -13,28 +11,26 @@ import Authentication from '../components/Authentication';
 
 const BoardWrapperStyled = styled.div`
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     width: 100%;
-    height: 500px;
+    // height: 100vh;
     overflow: hidden;
     margin: 25px;
     padding: 15px;
+    // transform: scale(0.7); 
+    
 `;
 
 const PostitWrapperStyled = styled.div`
     display: flex;
     width: 100%;
+    height: 100vh;
     flex-direction: row;
-    justify-content: flex-end;
+    align-items: center;
+    justify-content: center;
     padding: 15px;
 
-    @media screen and (max-width: 992px) {
-        width: 100%;
-        display: flex; 
-        flex-direction: row;
-        justify-content: center;
-    }
 `;
 
 class Host extends Component {
@@ -81,15 +77,14 @@ class Host extends Component {
                 <Authentication />
                 <BoardWrapperStyled>
 
-                    <Board id='board-1'></Board>
-
-                </BoardWrapperStyled>
-          
+                    {/* <Board id='board-1'></Board> */}
+                    </BoardWrapperStyled>
                 <PostitWrapperStyled>
 
                    {/* <Postit id='postit-1' draggable='true' style={{ backgroundColor: backgroundColor }}/> */}
                   
                     <Notes notes={notes} />
+             
 
                     {/* <Postit id='postit-1' draggable='true'>
 
@@ -114,8 +109,7 @@ class Host extends Component {
      
 
                     </Postit> */}
-
-
+    
                 </PostitWrapperStyled>
             
             </>

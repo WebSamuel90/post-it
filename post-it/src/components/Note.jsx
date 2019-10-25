@@ -1,6 +1,7 @@
 import React from 'react';
 import { firestore } from '../firebase';
 import styled from 'styled-components';
+import Draggable from 'react-draggable';
 
 const NoteStyled = styled.div`
     padding: 15px 25px;
@@ -14,7 +15,7 @@ const NoteStyled = styled.div`
 `;
 
 const Note = ({ id, content, likes, user }) => {
-    
+
     const noteRef = firestore.doc(`notes/${id}`);
     const remove = () => noteRef.delete();
     const like = () => noteRef.update({ likes: likes + 1 });
@@ -32,22 +33,24 @@ const Note = ({ id, content, likes, user }) => {
     const dragOver = e => {
         e.stopPropagation();
     }
-
+        
     return ( 
-        <>
+        <Draggable >
             <NoteStyled
-                id={id}
-                draggable= {true}
-                onDragStart={dragStart}
-                onDragOver={dragOver}
+                // id={id}
+                // draggable= {true}
+                // onDragStart={dragStart}
+                // onDragOver={dragOver}
             >
                 <p>{content}</p>
                 <p>{likes}</p>
                 <button className="like" onClick={like}>Like</button>
                 <button className="delete" onClick={remove}>X</button>
             </NoteStyled>
-        </>
+        </Draggable >
+    
      );
+    
 };
 
  
