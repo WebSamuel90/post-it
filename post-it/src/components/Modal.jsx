@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import Postit from '../Postit';
-import Button from '../Button';
-import AddNote from '../AddNote';
-import styled from 'styled-components';
+import Postit from './Postit';
+import Button from './Button';
 import AddNote from './AddNote';
+import styled from 'styled-components';
 
 const ModalStyled = styled.div`
     width: 500px;
