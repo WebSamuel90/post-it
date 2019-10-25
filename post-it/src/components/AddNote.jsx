@@ -18,6 +18,7 @@ class AddNote extends Component {
         
         const note = {
             content,
+            likes: 0,
             // user: {
             //     uid,
             //     displayName,
