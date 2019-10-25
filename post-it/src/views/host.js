@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import Board from '../components/Board';
+import Navbar from '../components/Navbar';
 // import Postit from '../components/Postit';
 
 import { firestore, auth, createUserProfileDocument } from '../firebase';
@@ -71,11 +72,14 @@ class Host extends Component {
     render() {
         const {notes, user} = this.state;
         
+        
         return (
             <>
+                <Navbar />
                 <h1>Host page</h1>
                 <Authentication />
                 <BoardWrapperStyled>
+                
 
                     {/* <Board id='board-1'></Board> */}
                     </BoardWrapperStyled>
@@ -84,7 +88,8 @@ class Host extends Component {
                    {/* <Postit id='postit-1' draggable='true' style={{ backgroundColor: backgroundColor }}/> */}
                   
                     <Notes notes={notes} />
-             
+                
+                        
 
                     {/* <Postit id='postit-1' draggable='true'>
 

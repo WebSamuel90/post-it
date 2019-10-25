@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { firestore } from '../firebase';
 import styled from 'styled-components';
-import Draggable from 'react-draggable';
+import DraggableCore from 'react-draggable';
 
 const NoteStyled = styled.div`
     padding: 15px 25px;
@@ -20,22 +20,27 @@ const Note = ({ id, content, likes, user }) => {
     const remove = () => noteRef.delete();
     const like = () => noteRef.update({ likes: likes + 1 });
 
-    const dragStart = e => {
-        const target = e.target;
-        e.dataTransfer.setData('card_id', target.id);
+    // const dragStart = e => {
+    //     const target = e.target;
+    //     e.dataTransfer.setData('card_id', target.id);
 
-        setTimeout(() => {
-            target.style.display = 'none';
-        }, 0);
+    //     setTimeout(() => {
+    //         target.style.display = 'none';
+    //     }, 0);
 
-    }
+    // }
 
-    const dragOver = e => {
-        e.stopPropagation();
-    }
+    // const dragOver = e => {
+    //     e.stopPropagation();
+    // }
+
+     console.log(DraggableCore);
+     
         
     return ( 
-        <Draggable >
+        <DraggableCore
+            
+            >
             <NoteStyled
                 // id={id}
                 // draggable= {true}
@@ -47,10 +52,12 @@ const Note = ({ id, content, likes, user }) => {
                 <button className="like" onClick={like}>Like</button>
                 <button className="delete" onClick={remove}>X</button>
             </NoteStyled>
-        </Draggable >
+        
     
+        </DraggableCore >
+
      );
-    
+
 };
 
  
