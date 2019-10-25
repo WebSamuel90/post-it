@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import Postit from './Postit';
-import Button from './Button';
+import Postit from '../Postit';
+import Button from '../Button';
+import AddNote from '../AddNote';
 import styled from 'styled-components';
 import AddNote from './AddNote';
 
