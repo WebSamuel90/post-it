@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Postit from './Postit';
 import Button from './Button';
 import styled from 'styled-components';
+import AddNote from './AddNote';
 
 const ModalStyled = styled.div`
     width: 500px;
@@ -47,10 +48,10 @@ function Modal (props) {
         const dialog = (
             <ModalStyled>
                 <ButtonStyled onClick={ props.onClose }>x</ButtonStyled>
-
-                    <Postit style={{ backgroundColor: backgroundColor }}>
+                    <AddNote />
+                    {/* <Postit style={{ backgroundColor: backgroundColor }}>
                         <h1>{backgroundColor}</h1>
-                    </Postit>
+                    </Postit> */}
                     <div>
                         <Button name="green" onClick={() => setBackgroundColor(colors.Green)}></Button>
                         <Button name="pink" onClick={() => setBackgroundColor(colors.Pink)}></Button>
