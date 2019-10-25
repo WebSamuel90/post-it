@@ -4,7 +4,6 @@ import Modal from '../components/Modal';
 // import ModalButton from '../components/ModalButton';
 import styled from 'styled-components';
 
-
 const WrapperStyled = styled.div`
     width: 100%;
     height: 80vh;
@@ -22,22 +21,18 @@ const WrapperStyled = styled.div`
     }
 `;
 
-
 const ModalButton = styled.img`
     height: 100px;
     width: 100px;
     cursor: pointer;
 `;
 
-
 const colors = {
     Green: '#39D1B4',
     Yellow:'#ffc',
     Pink: '#FFB6C1',
     Blue: '#ADD8E6'
-
 }
-
 
 const User = () => {
     // const [backgroundColor, setBackgroundColor] = useState(colors.Yellow)
@@ -68,13 +63,12 @@ const User = () => {
                     </Modal>}
                     
                     {/* <ModalButton onClick={() => setOpenButton(true)}></ModalButton>  */}
-                    <ModalButton src="assets/imgs/plus.svg" name="modal" onClick={() => setOpenButton(true)}></ModalButton>
+                    <ModalButton src={openButton === false ? "assets/imgs/plus.svg" : null} name="modal" onClick={() => setOpenButton(true)}></ModalButton>
                 </WrapperStyled>
             
             </>
         
         );
     }
-
 
 export default User;

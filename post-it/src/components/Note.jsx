@@ -43,7 +43,7 @@ const Note = ({ id, content, likes, user }) => {
                 // onDragOver={dragOver}
             >
                 <p>{content}</p>
-                <p>{likes}</p>
+                <p>{likes == 0 ? null : likes}</p>
                 <button className="like" onClick={like}>Like</button>
                 <button className="delete" onClick={remove}>X</button>
             </NoteStyled>
