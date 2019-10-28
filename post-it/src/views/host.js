@@ -78,49 +78,18 @@ class Host extends Component {
                 <Navbar />
                 <h1>Host page</h1>
                 <Authentication />
+
                 <BoardWrapperStyled>
                 
-
-                    {/* <Board id='board-1'></Board> */}
-                    </BoardWrapperStyled>
+                </BoardWrapperStyled>
                 <PostitWrapperStyled>
 
-                   {/* <Postit id='postit-1' draggable='true' style={{ backgroundColor: backgroundColor }}/> */}
-                  
                     <Notes notes={notes} />
-                
-                        
-
-                    {/* <Postit id='postit-1' draggable='true'>
-
-                        <p>Card one</p>
-                    </Postit>
-                    <Postit id='postit-2' draggable='true' style={{ backgroundColor: backgroundColor }}>
-                        <p>Card two</p>
-                    </Postit>
-                    <Postit id='postit-3' draggable='true' style={{ backgroundColor: backgroundColor }}>
-                        <p>Card three</p>
-                    </Postit>
-                    <Postit id='postit-4' draggable='true' style={{ backgroundColor: backgroundColor }}>
-                        <p>Card four</p>
-                    </Postit>
-                    <Postit id='postit-5' draggable='true' style={{ backgroundColor: backgroundColor }}>
-                        <p>Card four</p>
-
-                    </Postit>
-                    <Postit id='postit-6' draggable='true' style={{ backgroundColor: backgroundColor }}>
-                        <p>Card four</p>
-                    </Postit>
-     
-
-                    </Postit> */}
     
                 </PostitWrapperStyled>
             
             </>
-            
         );
-
     }
 }
 
