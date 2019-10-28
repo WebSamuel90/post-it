@@ -2,11 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import Board from '../components/Board';
 import Navbar from '../components/Navbar';
-// import Postit from '../components/Postit';
-
-import { firestore, auth, createUserProfileDocument } from '../firebase';
 import Notes from "../components/Notes";
-import { collectIdsAndDocs } from '../utilities';
 import Authentication from '../components/Authentication';
 
 
@@ -34,26 +30,8 @@ const PostitWrapperStyled = styled.div`
 
 `;
 
-class Host extends Component {
+const Host = () => {
 //    const [backgroundColor, setBackgroundColor] = useState(colors.Yellow)
-    state = { 
-        user: null
-    }
-    
-      unsubscribeFromAuth = null;
-    
-      componentDidMount = async () => {
-        this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
-            const user = await createUserProfileDocument(userAuth);
-            
-            this.setState({ user });
-        });
-      };
-    
-      componentWillUnmount = () => {
-          this.unsubscribeFromAuth();
-      };
-
 
 // const colors = {
   //  Green: '#39D1B4',
@@ -61,29 +39,24 @@ class Host extends Component {
  //   Pink: '#FFB6C1',
   //  Blue: '#ADD8E6'
 // }
-
-    render() {
-        const { user } = this.state;
         
-        
-        return (
-            <>
-                <Navbar />
-                <h1>Host page</h1>
-                <Authentication />
+    return (
+        <>
+            <Navbar />
+            <h1>Host page</h1>
+            <Authentication />
 
-                <BoardWrapperStyled>
-                
-                </BoardWrapperStyled>
-                <PostitWrapperStyled>
-
-                    <Notes />
-    
-                </PostitWrapperStyled>
+            <BoardWrapperStyled>
             
-            </>
-        );
-    }
+            </BoardWrapperStyled>
+            <PostitWrapperStyled>
+
+                <Notes />
+
+            </PostitWrapperStyled>
+        
+        </>
+    );
 }
 
 

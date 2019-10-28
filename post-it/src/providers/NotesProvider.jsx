@@ -14,11 +14,11 @@ class NotesProvider extends Component {
             const notes = snapshot.docs.map(collectIdsAndDocs);
             this.setState({ notes });
         });
-    }
+    };
 
     componentWillUnmount = () => {
         this.unsubscribeFromFirestore();
-    }
+    };
 
     render() {
         const { notes } = this.state;
@@ -27,7 +27,7 @@ class NotesProvider extends Component {
         return (
             <NotesContext.Provider value={notes}>{children}</NotesContext.Provider>
         )
-    }
+    };
 }
 
 export default NotesProvider;
