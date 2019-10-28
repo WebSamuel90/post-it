@@ -1,15 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Note from './Note';
 import AddNote from './AddNote';
+import { NotesContext } from '../providers/NotesProvider';
 
-const Notes = ({ notes }) => {
+const Notes = () => {
+
+    const notes = useContext(NotesContext);
     
     return ( 
         <>
             <AddNote />
-            {notes.map(note => (
-                <Note {...note} key={note.id} 
-            />))}
+            {notes.map(note => <Note {...note} key={note.id} />)}
         </>
     );
 }

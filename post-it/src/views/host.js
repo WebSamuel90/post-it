@@ -2,11 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import Board from '../components/Board';
 import Navbar from '../components/Navbar';
-// import Postit from '../components/Postit';
-
-import { firestore, auth, createUserProfileDocument } from '../firebase';
 import Notes from "../components/Notes";
-import { collectIdsAndDocs } from '../utilities';
 import Authentication from '../components/Authentication';
 
 
@@ -34,33 +30,8 @@ const PostitWrapperStyled = styled.div`
 
 `;
 
-class Host extends Component {
+const Host = () => {
 //    const [backgroundColor, setBackgroundColor] = useState(colors.Yellow)
-    state = { 
-        notes: [],
-        user: null
-    }
-    
-      unsubscribeFromFirestore = null;
-      unsubscribeFromAuth = null;
-    
-      componentDidMount = async () => {
-        this.unsubscribeFromFirestore = firestore.collection('notes').onSnapshot(snapshot => {
-            const notes = snapshot.docs.map(collectIdsAndDocs);
-            this.setState({ notes });
-        });
-
-        this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
-            const user = await createUserProfileDocument(userAuth);
-            
-            this.setState({ user });
-        });
-      };
-    
-      componentWillUnmount = () => {
-          this.unsubscribeFromFirestore();
-      };
-
 
 // const colors = {
   //  Green: '#39D1B4',
@@ -68,60 +39,24 @@ class Host extends Component {
  //   Pink: '#FFB6C1',
   //  Blue: '#ADD8E6'
 // }
-
-    render() {
-        const {notes, user} = this.state;
         
+    return (
+        <>
+            <Navbar />
+            <h1>Host page</h1>
+            <Authentication />
+
+            <BoardWrapperStyled>
+            
+            </BoardWrapperStyled>
+            <PostitWrapperStyled>
+
+                <Notes />
+
+            </PostitWrapperStyled>
         
-        return (
-            <>
-                <Navbar />
-                <h1>Host page</h1>
-                <Authentication />
-                <BoardWrapperStyled>
-                
-
-                    {/* <Board id='board-1'></Board> */}
-                    </BoardWrapperStyled>
-                <PostitWrapperStyled>
-
-                   {/* <Postit id='postit-1' draggable='true' style={{ backgroundColor: backgroundColor }}/> */}
-                  
-                    <Notes notes={notes} />
-                
-                        
-
-                    {/* <Postit id='postit-1' draggable='true'>
-
-                        <p>Card one</p>
-                    </Postit>
-                    <Postit id='postit-2' draggable='true' style={{ backgroundColor: backgroundColor }}>
-                        <p>Card two</p>
-                    </Postit>
-                    <Postit id='postit-3' draggable='true' style={{ backgroundColor: backgroundColor }}>
-                        <p>Card three</p>
-                    </Postit>
-                    <Postit id='postit-4' draggable='true' style={{ backgroundColor: backgroundColor }}>
-                        <p>Card four</p>
-                    </Postit>
-                    <Postit id='postit-5' draggable='true' style={{ backgroundColor: backgroundColor }}>
-                        <p>Card four</p>
-
-                    </Postit>
-                    <Postit id='postit-6' draggable='true' style={{ backgroundColor: backgroundColor }}>
-                        <p>Card four</p>
-                    </Postit>
-     
-
-                    </Postit> */}
-    
-                </PostitWrapperStyled>
-            
-            </>
-            
-        );
-
-    }
+        </>
+    );
 }
 
 
