@@ -37,19 +37,12 @@ const PostitWrapperStyled = styled.div`
 class Host extends Component {
 //    const [backgroundColor, setBackgroundColor] = useState(colors.Yellow)
     state = { 
-        notes: [],
         user: null
     }
     
-      unsubscribeFromFirestore = null;
       unsubscribeFromAuth = null;
     
       componentDidMount = async () => {
-        this.unsubscribeFromFirestore = firestore.collection('notes').onSnapshot(snapshot => {
-            const notes = snapshot.docs.map(collectIdsAndDocs);
-            this.setState({ notes });
-        });
-
         this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
             const user = await createUserProfileDocument(userAuth);
             
@@ -58,7 +51,7 @@ class Host extends Component {
       };
     
       componentWillUnmount = () => {
-          this.unsubscribeFromFirestore();
+          this.unsubscribeFromAuth();
       };
 
 
@@ -70,7 +63,7 @@ class Host extends Component {
 // }
 
     render() {
-        const {notes, user} = this.state;
+        const { user } = this.state;
         
         
         return (
@@ -84,7 +77,7 @@ class Host extends Component {
                 </BoardWrapperStyled>
                 <PostitWrapperStyled>
 
-                    <Notes notes={notes} />
+                    <Notes />
     
                 </PostitWrapperStyled>
             
