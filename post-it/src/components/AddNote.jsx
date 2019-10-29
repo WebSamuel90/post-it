@@ -58,16 +58,16 @@ class AddNote extends Component {
         event.preventDefault();
 
         const { content } = this.state;
-        // const { uid, displayName, email } = auth.currentUser || {};
+        const { uid, displayName, email } = auth.currentUser || {};
         
         const note = {
             content,
             likes: 0,
-            // user: {
-            //     uid,
-            //     displayName,
-            //     email,
-            // }
+            user: {
+                uid,
+                displayName,
+                email,
+            }
         };
         
         try {
