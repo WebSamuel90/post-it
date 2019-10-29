@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { auth } from 'firebase';
-import { createUserProfileDocument } from '../firebase';
+import { auth, createUserProfileDocument } from '../firebase';
 
 class SignUp extends Component {
     state = { displayName: '', email: '', password: '' };
