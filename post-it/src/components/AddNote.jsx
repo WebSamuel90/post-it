@@ -94,6 +94,7 @@ class AddNote extends Component {
                         onChange={this.handleChange}
                         html={this.state.content}
                         onBlur={this.sanitize}
+                        
                     />
                 
                     <input type="submit" value="Create Note" />

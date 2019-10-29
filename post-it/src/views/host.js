@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import Board from '../components/Board';
-import Navbar from '../components/Navbar';
+// import Postit from '../components/Postit';
+
+import { firestore, auth, createUserProfileDocument } from '../firebase';
+//import Navbar from '../components/Navbar';
 import Notes from "../components/Notes";
 import Authentication from '../components/Authentication';
 
@@ -39,12 +42,14 @@ const Host = () => {
  //   Pink: '#FFB6C1',
   //  Blue: '#ADD8E6'
 // }
-        
-    return (
-        <>
-            <Navbar />
-            <h1>Host page</h1>
-            <Authentication />
+
+        return (
+            <>
+                
+                <h1>Host page</h1>
+                <Authentication />
+                <BoardWrapperStyled>
+                
 
             <BoardWrapperStyled>
             

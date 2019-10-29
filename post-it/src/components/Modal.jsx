@@ -20,6 +20,7 @@ const ModalStyled = styled.div`
     display: flex;
     align-items: center;
     flex-direction: column;
+    transition: all 0.4s ease;
 `;
 
 const ButtonStyled = styled.div`
@@ -48,7 +49,7 @@ function Modal (props) {
         const dialog = (
             <ModalStyled>
                 <ButtonStyled onClick={ props.onClose }>x</ButtonStyled>
-                    <AddNote />
+                    <AddNote/>
                     {/* <Postit style={{ backgroundColor: backgroundColor }}>
                         <h1>{backgroundColor}</h1>
                     </Postit> */}
