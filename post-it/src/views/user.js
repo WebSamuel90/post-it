@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Postit from '../components/Postit';
 import Modal from '../components/Modal';
+import Navbar from '../components/Navbar';
 // import ModalButton from '../components/ModalButton';
 import styled from 'styled-components';
 
@@ -27,6 +28,24 @@ const ModalButton = styled.img`
     cursor: pointer;
 `;
 
+const NavbarButton = styled.button`
+    height: 200px;
+    width: 100px;
+    cursor: pointer;
+    color: pink;
+`;
+
+const NavbarButtonPlacement = styled.div`
+    width: 100vw;
+    height: 50px;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: row; 
+    justify-content: flex-start;
+
+`;
+
 const colors = {
     Green: '#39D1B4',
     Yellow:'#ffc',
@@ -37,15 +56,23 @@ const colors = {
 const User = () => {
     // const [backgroundColor, setBackgroundColor] = useState(colors.Yellow)
     const [openButton, setOpenButton] = useState(false)
+    const [openNavbar, setOpenNavbar] = useState(true)
     
     console.log(openButton);
     
         return (
             <>
                 <h1>User page</h1>
+{/*         
+                {openNavbar && <Navbar openNavbar='false' onClose={() => setOpenNavbar(false)}>
+                    </Navbar>} */}
+                    
+                {/* <NavbarButtonPlacement>
+                    <NavbarButton name="navbar" onClick={() => setOpenNavbar(true)}></NavbarButton>
+                </NavbarButtonPlacement> */}
 
                 <WrapperStyled>
-                    
+                <Navbar />
                 {/* <Postit id="postit" style={{ backgroundColor: backgroundColor }}>
                     <h1>{backgroundColor}</h1>
                     

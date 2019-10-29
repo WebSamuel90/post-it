@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import Board from '../components/Board';
-import Navbar from '../components/Navbar';
 // import Postit from '../components/Postit';
 
 import { firestore, auth, createUserProfileDocument } from '../firebase';
@@ -75,7 +74,7 @@ class Host extends Component {
         
         return (
             <>
-                <Navbar />
+                
                 <h1>Host page</h1>
                 <Authentication />
                 <BoardWrapperStyled>
