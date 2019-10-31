@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Board from '../components/Board';
 
 import { firestore, auth, createUserProfileDocument } from '../firebase';
-//import Navbar from '../components/Navbar';
+import Navbar from '../components/Navbar';
 import Notes from "../components/Notes";
 import Authentication from '../components/Authentication';
 
@@ -12,6 +12,7 @@ const BoardWrapperStyled = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: aqua;
     width: 100%;
     // height: 100vh;
     overflow: hidden;
@@ -25,6 +26,7 @@ const PostitWrapperStyled = styled.div`
     display: flex;
     width: 100%;
     height: 100vh;
+    background-color: pink;
     flex-direction: row;
     align-items: center;
     justify-content: center;
@@ -46,13 +48,13 @@ const Host = () => {
             <>
                 
                 <h1>Host page</h1>
+                <Navbar />
                 <Authentication />
                 <BoardWrapperStyled>
-                
+                    
 
-            
-            
             </BoardWrapperStyled>
+            
             <PostitWrapperStyled>
 
                 <Notes />
