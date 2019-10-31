@@ -2,31 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom'; 
 import NavbarSignIn from './NavbarSignIn';
+import AddNote from './AddNote';
 
-const ButtonStyled = styled.div`
-    margin-bottom: 15px; 
-    padding: 3px 8px; 
-    cursor: pointer; 
-    border-radius: 50%;
-    background-color: #fff;
-    border: none; 
-    width: 30px; 
-    height: 30px;
-    font-weight: bold; 
-    align-self: flex-end;
-`;
-
-
-const NavbarStyled = styled.nav`
-    display: flex;
-    width: 150px;
-    height: 100vh;
-    flex-direction: row;
-    top: 0;
-    left: 0;
-    justify-content: flex-start;
-    position: absolute;
-`;
 
 const MenuWrap = styled.div`
     position: fixed;
@@ -40,8 +17,8 @@ const MenuWrap = styled.div`
         left: 0;
         z-index: 2;
         cursor: pointer;
-        width: 50px;
-        height: 50px;
+        width: 60px;
+        height: 60px;
         opacity: 0;
     }
 
@@ -98,51 +75,28 @@ const MenuWrap = styled.div`
         transform: rotate(225deg);
     }
 
-    .menu > div {
-        background-color: aqua;
-        border-radius: 50%;
-        width: 30vw;
-        height: 30vw;
-        display: flex;
-        flex:none;
-        align-items: center;
-        justify-content: center;
-        transform: scale(0);
-        transition: all 0.4s ease;
+
+    .toggler:checked ~ .nav-sidebar {
+        // visibility: visible;
+        left: 0;
+        transition: all 0.3s ease-in-out;
     }
 
-    .menu > div > div {
-        text-align: center;
-        max-width: 90vw;
-        max-height: 100vh;
-        transition: opacity 0.4s ease;
-    }
-
-    .toggler:checked ~ .menu {
-        visibility: visible;
-    }
-
-    .toggler:checked ~ .menu > div  {
-        transform: scale(1);
-        transition-duration: 0.4s ease;
-    }s
 `;
 
-
-
-const Menu = styled.div`
+const Aside = styled.aside`
     position: fixed; 
-    top: 0; 
-    left: 0; 
-    width: 100%;
+    background-color: aqua;
+    bottom: 0; 
+    left: -200px; 
+    width: 200px;
     height: 100%;
-    visibility: hidden;
     overflow: hidden; 
     display: flex;
     align-items: center;
-    justify-content: center;
-
-
+    justify-content: flex-start;
+    z-index: 1000px;
+    transition: all 0.3s ease-in-out;
 `;
 
 const UlStyled = styled.ul`
@@ -150,20 +104,31 @@ const UlStyled = styled.ul`
     flex-direction: column;
     list-style-type: none;
     text-align: start;
+    overflow: hidden; 
+    // visibility: hidden;
     margin: 0;
-    padding: 0;
+    padding-top: 15px;
 
     li {
         list-style-type: none;
         color: black;
-        font-size: 1.5rem;
-        padding: 1rem;
-       
+        line-height: 60px;
+        // padding: 1rem;
     }
 
     a {
         text-decoration: none;
-        transition: color 0.4s ease;
+        display: block;
+        height: 60px;
+        padding: 0 10px;
+        font-size: 16px;
+        text-transform: uppercase;
+        white-space: nowrap;
+    
+    }
+
+    a:hover {
+        background-color: #fff;
     }
 `;
 
@@ -180,19 +145,17 @@ function Navbar (props) {
                 
                     </div>
                 {/* <ButtonStyled onClick={ props.onClose }>x</ButtonStyled> */}
-                    <Menu className="menu">
-                        <div>
-                            <div>
+
+                    <Aside className="nav-sidebar" id='sidebar'>
+                       
                                 <UlStyled>
                                     <Link to='/' ><li>Home</li></Link>
-                                    <Link to='/' ><li>Create postit</li></Link>
+                                    <Link to='/' ><li>Create Postit</li></Link>
                                     <Link to='/' ><li>Members</li></Link>
-                                    <Link to='/' ><li>Log out</li></Link>
+                                        <AddNote width="100px"/>
                                         {/* <NavbarSignIn /> */}
-                                </UlStyled>
-                             </div>
-                        </div>
-                    </Menu>
+                                </UlStyled>        
+                    </Aside>
                 </MenuWrap>
 
             {/* </NavbarStyled> */}
