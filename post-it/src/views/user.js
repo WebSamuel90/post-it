@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Postit from '../components/Postit';
 import Modal from '../components/Modal';
 import Navbar from '../components/Navbar';
 // import ModalButton from '../components/ModalButton';
@@ -73,10 +72,7 @@ const User = () => {
 
                 <WrapperStyled>
                 <Navbar />
-                {/* <Postit id="postit" style={{ backgroundColor: backgroundColor }}>
-                    <h1>{backgroundColor}</h1>
-                    
-                </Postit>
+                {/* 
                     <div>
                     <Button name="green" onClick={() => setBackgroundColor(colors.Green)}></Button>
                     <Button name="pink" onClick={() => setBackgroundColor(colors.Pink)}></Button>

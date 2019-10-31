@@ -1,33 +1,27 @@
-import React, { Component, createContext } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
 import { firestore } from '../firebase';
 import { collectIdsAndDocs } from '../utilities';
 
 export const NotesContext = createContext();
 
-class NotesProvider extends Component {
-    state = { notes: [] };
+const NotesProvider = ({children}) => {
+    const [notes, setNotes] = useState([]);
 
-    unsubscribeFromFirestore = null;
+    useEffect(() => {
+        const unsubscribe = firestore
+            .collection('notes')
+            .onSnapshot((snapshot) => {
+                const newNotes = snapshot.docs.map(collectIdsAndDocs);
 
-    componentDidMount = () => {
-        this.unsubscribeFromFirestore = firestore.collection('notes').onSnapshot(snapshot => {
-            const notes = snapshot.docs.map(collectIdsAndDocs);
-            this.setState({ notes });
-        });
-    };
+                setNotes(newNotes)
+            })
 
-    componentWillUnmount = () => {
-        this.unsubscribeFromFirestore();
-    };
-
-    render() {
-        const { notes } = this.state;
-        const { children } = this.props;
-
-        return (
-            <NotesContext.Provider value={notes}>{children}</NotesContext.Provider>
-        )
-    };
+        return () => unsubscribe();
+    }, [])
+    
+    return (
+        <NotesContext.Provider value={notes}>{children}</NotesContext.Provider>
+    )
 }
 
 export default NotesProvider;

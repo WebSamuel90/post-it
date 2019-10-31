@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import Board from '../components/Board';
-// import Postit from '../components/Postit';
 
 import { firestore, auth, createUserProfileDocument } from '../firebase';
 //import Navbar from '../components/Navbar';
@@ -51,7 +50,7 @@ const Host = () => {
                 <BoardWrapperStyled>
                 
 
-            <BoardWrapperStyled>
+            
             
             </BoardWrapperStyled>
             <PostitWrapperStyled>
