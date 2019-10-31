@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, { useState } from 'react';
 import { firestore, auth } from '../firebase';
 import styled from 'styled-components';
 import ContentEditable from 'react-contenteditable';
