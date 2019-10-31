@@ -51,7 +51,7 @@ const Host = () => {
                 <BoardWrapperStyled>
                 
 
-            <BoardWrapperStyled>
+            
             
             </BoardWrapperStyled>
             <PostitWrapperStyled>
