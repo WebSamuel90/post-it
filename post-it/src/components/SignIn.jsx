@@ -1,44 +1,45 @@
-import React, { Component } from 'react';
+import React, { useContext, useState } from 'react';
+import { UserContext } from '../providers/UserProvider';
+import firebase from '../firebase';
 
-class SignIn extends Component {
-  state = { email: '', password: '' };
+const SignIn = () => {
 
-  handleChange = event => {
-    const { name, value } = event.target;
+	const user = useContext(UserContext)
+	console.log(user);
+	
+	const [email, setEmail] = useState('');
+	const [password, setPassword] = useState('');
 
-    this.setState({ [name]: value });
-  };
+	const handleSubmit = async event => {
+		event.preventDefault();
 
-  handleSubmit = event => {
-    event.preventDefault();
+		try {
+			await firebase.auth().signInWithEmailAndPassword(email, password);
+			
+		} catch(error) {
+			console.error(error);
+		};
+	};
 
-    this.setState({ email: '', password: '' });
-  };
+  	return (
+		<>
+			<h2>Sign In</h2>
+			<input
+				type="email"
+				name="email"
+				placeholder="Email"
+				onChange={e => setEmail(e.target.value)}
+			/>
+			<input
+				type="password"
+				name="password"
+				placeholder="Password"
+				onChange={e => setPassword(e.target.value)}
+			/>
+			<input type="submit" onClick={handleSubmit} value="Sign In" />
 
-  render() {
-    const { email, password } = this.state;
-
-    return (
-      <form className="SignIn" onSubmit={this.handleSubmit}>
-        <h2>Sign In</h2>
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          value={email}
-          onChange={this.handleChange}
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={password}
-          onChange={this.handleChange}
-        />
-        <input type="submit" value="Sign In" />
-      </form>
-    );
-  }
-}
+		</>
+  );
+};
 
 export default SignIn;

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { firestore, auth } from '../firebase';
 import styled from 'styled-components';
 import ContentEditable from 'react-contenteditable';
@@ -36,72 +36,55 @@ const InputStyled = {
     outline: 'none',
 }
 
+const AddNote = () => {
+    const [content, setContent] = useState('');
 
-class AddNote extends Component {
-    state = { content: '' }
-
-    handleChange = event => {
-        const { name, value } = event.target;
-        this.setState({ content: event.target.value });
-    };
-
-    sanitizeConf = {
-        allowedTags: ["b", "i", "em", "strong", "a", "p", "h1"],
-        allowedAttributes: { a: ["href"] }
-    };
-
-    sanitize = () => {
-        this.setState({ content: sanitizeHtml(this.state.content, this.sanitizeConf) });
-    };
-
-    handleSubmit = async event => {
-        event.preventDefault();
-
-        const { content } = this.state;
-        // const { uid, displayName, email } = auth.currentUser || {};
+    const sanitize = () => {
         
+        setContent(prevContent => { return sanitizeHtml(prevContent, {
+            allowedTags: ["b", "i", "em", "strong", "a", "p", "h1"],
+            allowedAttributes: { a: ["href"] }
+        }) });
+        
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        const { uid, displayName, email } = auth.currentUser || {};
+
         const note = {
             content,
             likes: 0,
-            // user: {
-            //     uid,
-            //     displayName,
-            //     email,
-            // }
+            user: {
+                uid,
+                displayName,
+                email,
+            }
         };
         
-        try {
-            firestore.collection('notes').add(note);
-
-        } catch (error) {
-            console.error(error);
-        };
-
-        this.setState({ content: '' });
+        firestore.collection('notes').add(note)
+        .then(() => {
+            setContent('')
+        });
     }
 
-    render() { 
-        const { content } = this.state;
-
-        return ( 
-            <>
-                <form onSubmit={this.handleSubmit}>
-                    <ContentEditable
-                        style={InputStyled}
-                        disabled={false}
-                        type="text"
-                        name="content"
-                        onChange={this.handleChange}
-                        html={this.state.content}
-                        onBlur={this.sanitize}
-                        
-                    />
-                
-                    <input type="submit" value="Create Note" />
-                </form>
-            </>
-         );
-    }
+    return ( 
+        <>
+            <form onSubmit={handleSubmit}>
+                <ContentEditable
+                    style={InputStyled}
+                    disabled={false}
+                    type="text"
+                    onChange={e => setContent(e.target.value)}
+                    html={content}
+                    onBlur={sanitize}
+                />
+            
+                <input type="submit" value="Create Note" />
+            </form>
+        </>
+    );
 }
- 
+
 export default AddNote;
