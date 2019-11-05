@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom'; 
 import NavbarSignIn from './NavbarSignIn';
 import AddNote from './AddNote';
+import Authentication from './Authentication';
 
 
 const MenuWrap = styled.div`
@@ -154,6 +155,7 @@ function Navbar (props) {
                                     <Link to='/' ><li>Members</li></Link>
                                         <AddNote width="100px"/>
                                         {/* <NavbarSignIn /> */}
+                                        <Authentication />
                                 </UlStyled>        
                     </Aside>
                 </MenuWrap>

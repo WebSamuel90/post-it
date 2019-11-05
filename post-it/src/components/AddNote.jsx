@@ -53,8 +53,13 @@ const AddNote = () => {
 
         const { uid, displayName, email } = auth.currentUser || {};
 
+        const xPos = 0;
+        const yPos = 0;
+
         const note = {
             content,
+            xPos,
+            yPos,
             likes: 0,
             user: {
                 uid,
