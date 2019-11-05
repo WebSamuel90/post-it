@@ -19,24 +19,39 @@ import sanitizeHtml from "sanitize-html";
 //     }
 // `;
 
-const InputStyled = {
-    padding: '15px 25px',
-    boxShadow: '2px 4px 6px #444',
-    backgroundColor: '#ffc',
-    width: '250px',
-    height: '150px',
-    margin: '10px',
-    cursor: 'pointer',
-    overflow: 'hidden',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexWrap: 'wrap',
-    resize: 'none',
-    outline: 'none',
-}
+// const InputStyled = {
+//     padding: '15px 25px',
+//     boxShadow: '2px 4px 6px #444',
+//     backgroundColor: '#ffc',
+//     height: '150px',
+//     margin: '10px',
+//     cursor: 'pointer',
+//     overflow: 'hidden',
+//     display: 'flex',
+//     justifyContent: 'center',
+//     alignItems: 'center',
+//     flexWrap: 'wrap',
+//     resize: 'none',
+//     outline: 'none',
+// }
 
-const AddNote = () => {
+const AddNote = (props) => {
+    const InputStyled = {
+        padding: '15px 25px',
+        boxShadow: '2px 4px 6px #444',
+        backgroundColor: props.backgroundColor,
+        height: '150px',
+        width: props.width,
+        margin: '10px',
+        cursor: 'pointer',
+        overflow: 'hidden',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexWrap: 'wrap',
+        resize: 'none',
+        outline: 'none',
+    }
     const [content, setContent] = useState('');
 
     const sanitize = () => {
@@ -84,8 +99,10 @@ const AddNote = () => {
                     onChange={e => setContent(e.target.value)}
                     html={content}
                     onBlur={sanitize}
-                />
-            
+                    {...props}
+                    >
+             
+                    </ContentEditable>
                 <input type="submit" value="Create Note" />
             </form>
         </>

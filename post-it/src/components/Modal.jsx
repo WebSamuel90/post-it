@@ -4,29 +4,53 @@ import AddNote from './AddNote';
 import styled from 'styled-components';
 
 const ModalStyled = styled.div`
-    width: 500px;
-    height: 500px;
-    max-width: 100%;
+    width: 100%;
+    height: 100%;
     margin: 0 auto;
+    background-color: rgba(0,0,0,0.5);
     position: fixed; 
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
     z-index: 999;
-    padding: 10px 20px 40px;
     border-radius: 8px;
     display: flex;
     align-items: center;
+    justify-content: center;
     flex-direction: column;
     transition: all 0.4s ease;
+    border: 1px solid black;
 `;
 
-const ButtonStyled = styled.div`
-    margin-bottom: 15px; 
+const ModalContent = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 30px;
+    background-color: #fff;
+    width: 500px;
+    height: 600px;
+
+
+    @media screen and (max-width: 768px) {
+        height: 600px;
+        width: 100%;
+    }
+`;
+
+const ButtonPosition = styled.div`
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 40vw;
+`;
+
+const ButtonStyled = styled.img`
     padding: 3px 8px; 
     cursor: pointer; 
-    border-radius: 50%;
-    background-color: #fff;
+    margin-right: 40px;
     border: none; 
     width: 30px; 
     height: 30px;
@@ -35,28 +59,27 @@ const ButtonStyled = styled.div`
 `;
 
 const colors = {
-    Green: '#39D1B4',
+    Green: '#cdffcd',
     Yellow:'#ffc',
     Pink: '#FFB6C1',
-    Blue: '#ADD8E6'
+    Purple: '#ccccff'
 }
 
 function Modal (props) {
-    const [backgroundColor, setBackgroundColor] = useState(colors.Yellow)
+    const [postitColor, setPostitColor] = useState(colors.Yellow)
 
         const dialog = (
             <ModalStyled>
-                <ButtonStyled onClick={ props.onClose }>x</ButtonStyled>
-                    <AddNote/>
-                    {/* <Postit style={{ backgroundColor: backgroundColor }}>
-                        <h1>{backgroundColor}</h1>
-                    </Postit> */}
-                    <div>
-                        <Button name="green" onClick={() => setBackgroundColor(colors.Green)}></Button>
-                        <Button name="pink" onClick={() => setBackgroundColor(colors.Pink)}></Button>
-                        <Button name="blue" onClick={() => setBackgroundColor(colors.Blue)}></Button>
-                        <Button name="yellow" onClick={() => setBackgroundColor(colors.Yellow)}></Button>
-                    </div>
+                <ModalContent>
+                    <ButtonStyled src="assets/imgs/close.png" onClick={ props.onClose }></ButtonStyled>
+                        <AddNote backgroundColor= { postitColor } width='170px'></AddNote>
+                            <ButtonPosition>
+                                <Button backgroundColor={ colors.Green } name="green" onClick={() => setPostitColor(colors.Green)}></Button>
+                                <Button backgroundColor={ colors.Pink } name="pink" onClick={() => setPostitColor(colors.Pink)}></Button>
+                                <Button backgroundColor={ colors.Purple } name="purple" onClick={() => setPostitColor(colors.Purple)}></Button>
+                                <Button backgroundColor={ colors.Yellow } name="yellow" onClick={() => setPostitColor(colors.Yellow)}></Button>
+                            </ButtonPosition>
+                    </ModalContent>
                 { props.children }
              </ModalStyled>
         );

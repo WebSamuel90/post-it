@@ -4,18 +4,25 @@ import styled from 'styled-components';
 import DraggableCore from 'react-draggable';
 
 const Note = ({ id, content, likes, xPos, yPos}) => {
-    
+
     const NoteStyled = styled.div`
         padding: 15px 25px;
         box-shadow: 2px 4px 6px #444;
         background-color: #ffc;
-        width: 250px;
-        height: 150px;
-        margin: 10px;
-        cursor: pointer;
         position: absolute;
         top: ${yPos}px;
         left: ${xPos}px;
+        height:10em;
+        width:10em;
+        padding:1em;
+        margin: 10px;
+        cursor: pointer;
+        position: absolute;
+
+        @media screen and (max-width: 768px) {
+            height: 50px;
+            width: 50px;
+        }
     `;
 
     const noteRef = firestore.doc(`notes/${id}`);
@@ -37,6 +44,7 @@ const Note = ({ id, content, likes, xPos, yPos}) => {
     return ( 
         <DraggableCore onStop={getCoordinates} >
             <NoteStyled ref={inputRef} >
+            <NoteStyled >
 
                 <p>{content}</p>
                 <p>x: {xPos}</p>
