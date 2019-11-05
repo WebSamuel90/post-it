@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom'; 
 import NavbarSignIn from './NavbarSignIn';
 import AddNote from './AddNote';
+import Authentication from './Authentication';
 
 
 const MenuWrap = styled.div`
