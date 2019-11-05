@@ -42,10 +42,9 @@ const Note = ({ id, content, likes, xPos, yPos}) => {
     }
             
     return ( 
-        <DraggableCore onStop={getCoordinates} >
+        <DraggableCore onStop={getCoordinates}>
             <NoteStyled ref={inputRef} >
-            <NoteStyled >
-
+    
                 <p>{content}</p>
                 <p>x: {xPos}</p>
                 <p>y: {yPos}</p>
@@ -54,7 +53,7 @@ const Note = ({ id, content, likes, xPos, yPos}) => {
                 <button className="delete" onClick={remove}>X</button>
         
             </NoteStyled>
-        </DraggableCore >
+        </DraggableCore>
      );
 };
 
