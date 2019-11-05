@@ -195,22 +195,23 @@ function Navbar (props) {
                     </div>
                 {/* <ButtonStyled onClick={ props.onClose }>x</ButtonStyled> */}
 
-                    <Aside className="nav-sidebar" id='sidebar'>
-                            <UlStyled>
-                                    <LiStyled>Home</LiStyled>
-                                    <LiStyled>Members
-                                            <InputStyled type='checkbox' className="button"></InputStyled>
-                                            <ImgStyled src='assets/imgs/arrow.svg'/>
-                                            <MembersUl>
-                                                <li>1</li>
-                                                <li>2</li>
-                                                <li>3</li>
-                                            </MembersUl>
-                                        </LiStyled>
-                                    <AddNote width='170px' backgroundColor= { postitColor } />
-                            </UlStyled>        
-                    </Aside>
-                </MenuWrap>
+                <Aside className="nav-sidebar" id='sidebar'>
+                    <UlStyled>
+                        <LiStyled>Home</LiStyled>
+                        <Authentication />
+                        <LiStyled>Members
+                            <InputStyled type='checkbox' className="button"></InputStyled>
+                            <ImgStyled src='assets/imgs/arrow.svg'/>
+                            <MembersUl>
+                                <li>1</li>
+                                <li>2</li>
+                                <li>3</li>
+                            </MembersUl>
+                            </LiStyled>
+                        <AddNote width='170px' backgroundColor= { postitColor } />
+                    </UlStyled>        
+                </Aside>
+            </MenuWrap>
         </>
 
     )

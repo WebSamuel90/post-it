@@ -77,9 +77,9 @@ const AddNote = (props) => {
             yPos,
             likes: 0,
             user: {
-                uid,
-                displayName,
-                email,
+                uid: null,
+                displayName: null,
+                email: null,
             }
         };
         

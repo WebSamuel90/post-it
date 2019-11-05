@@ -45,22 +45,16 @@ const Host = () => {
   //  Blue: '#ADD8E6'
 // }
 
-        return (
-            <>
-                
-                <h1>Host page</h1>
-                <Navbar />
+    return (
+        <>
+            <h1>Host page</h1>
+            <Navbar />
 
-            
             <PostitWrapperStyled>
-
                 <Notes />
-
             </PostitWrapperStyled>
-        
         </>
     );
 }
-
 
 export default Host;
