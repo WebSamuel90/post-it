@@ -12,15 +12,15 @@ const NotesWrapper = styled.div`
 
 `;
 
-const Notes = () => {
+const Notes = (props) => {
 
     const notes = useContext(NotesContext);
     
     return ( 
         <>
-            <AddNote />
+            {/* <AddNote /> */}
             <NotesWrapper>
-                {notes.map(note => <Note {...note} key={note.id} />)}
+                {notes.map(note => <Note {...note} key={note.id} {...props} />)}
             </NotesWrapper>
         </>
     );

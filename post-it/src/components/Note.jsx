@@ -3,15 +3,23 @@ import { firestore } from '../firebase';
 import styled from 'styled-components';
 import DraggableCore from 'react-draggable';
 
+
 const NoteStyled = styled.div`
-    padding: 15px 25px;
+    // padding: 15px 25px;
     box-shadow: 2px 4px 6px #444;
     background-color: #ffc;
-    width: 250px;
-    height: 150px;
+    display:block;
+    height:10em;
+    width:10em;
+    padding:1em;
     margin: 10px;
     cursor: pointer;
     position: absolute;
+
+    @media screen and (max-width: 768px) {
+        height: 50px;
+        width: 50px;
+    }
 `;
 
 const Note = ({ id, content, likes, user}) => {
@@ -25,7 +33,7 @@ const Note = ({ id, content, likes, user}) => {
         <DraggableCore
             
             >
-            <NoteStyled>
+            <NoteStyled >
 
                 <p>{content}</p>
                 <p>{likes === 0 ? null : likes}</p>

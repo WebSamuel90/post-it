@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom'; 
 import NavbarSignIn from './NavbarSignIn';
@@ -8,13 +8,13 @@ import AddNote from './AddNote';
 const MenuWrap = styled.div`
     position: fixed;
     top: 0;
-    left: 0; 
+    right: 0; 
     z-index: 1;
 
     .toggler {
         position: absolute;
         top: 0;
-        left: 0;
+        right: 0;
         z-index: 2;
         cursor: pointer;
         width: 60px;
@@ -25,7 +25,7 @@ const MenuWrap = styled.div`
     .hamburger {
         position: absolute;
         top: 0;
-        left: 0;
+        right: 0;
         z-index: 1;
         width: 50px;
         height: 50px;
@@ -78,7 +78,7 @@ const MenuWrap = styled.div`
 
     .toggler:checked ~ .nav-sidebar {
         // visibility: visible;
-        left: 0;
+        right: 0;
         transition: all 0.3s ease-in-out;
     }
 
@@ -88,8 +88,8 @@ const Aside = styled.aside`
     position: fixed; 
     background-color: aqua;
     bottom: 0; 
-    left: -200px; 
-    width: 200px;
+    right: -300px; 
+    width: 300px;
     height: 100%;
     overflow: hidden; 
     display: flex;
@@ -101,20 +101,16 @@ const Aside = styled.aside`
 
 const UlStyled = styled.ul`
     display: flex;
+    height: 100%;
+    width: 100%;
     flex-direction: column;
     list-style-type: none;
+    justify-content: space-around;
     text-align: start;
     overflow: hidden; 
     // visibility: hidden;
     margin: 0;
     padding-top: 15px;
-
-    li {
-        list-style-type: none;
-        color: black;
-        line-height: 60px;
-        // padding: 1rem;
-    }
 
     a {
         text-decoration: none;
@@ -127,13 +123,65 @@ const UlStyled = styled.ul`
     
     }
 
-    a:hover {
-        background-color: #fff;
+    .button:checked ~ ul {
+        display: block;
+        transition: all 0.3s ease-in-out;
     }
 `;
 
+const LiStyled = styled.li`
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    text-transform: uppercase;
+    margin: 10px;
+    color: black;
+    // line-height: 60px;
+    // padding: 1rem;
+
+`;
+
+const MembersUl = styled.ul`
+    display: none;
+    position: absolute;
+    width: 30vw;
+    height: 150px;
+    margin-top: 25px;
+    line-height: 40px;
+    background-color: pink;
+
+    li {
+        margin: 0;
+        padding: 0 1em;
+        width: 30vw;
+    }
+`;
+
+const InputStyled = styled.input`
+    position: absolute;
+    z-index: 2;
+    cursor: pointer;
+    width: 150px;
+    height: 20px;
+    opacity: 0;
+`;
+
+const ImgStyled = styled.img`
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    margin-left: 10px;
+`;
+
+const colors = {
+    Green: '#cdffcd',
+    Yellow:'#ffc',
+    Pink: '#FFB6C1',
+    Purple: '#ccccff'
+}
 
 function Navbar (props) {
+    const [postitColor, setPostitColor] = useState(colors.Yellow)
 
     return(
         <>
@@ -147,18 +195,21 @@ function Navbar (props) {
                 {/* <ButtonStyled onClick={ props.onClose }>x</ButtonStyled> */}
 
                     <Aside className="nav-sidebar" id='sidebar'>
-                       
-                                <UlStyled>
-                                    <Link to='/' ><li>Home</li></Link>
-                                    <Link to='/' ><li>Create Postit</li></Link>
-                                    <Link to='/' ><li>Members</li></Link>
-                                        <AddNote width="100px"/>
-                                        {/* <NavbarSignIn /> */}
-                                </UlStyled>        
+                            <UlStyled>
+                                    <LiStyled>Home</LiStyled>
+                                    <LiStyled>Members
+                                            <InputStyled type='checkbox' className="button"></InputStyled>
+                                            <ImgStyled src='assets/imgs/arrow.svg'/>
+                                            <MembersUl>
+                                                <li>1</li>
+                                                <li>2</li>
+                                                <li>3</li>
+                                            </MembersUl>
+                                        </LiStyled>
+                                    <AddNote width='170px' backgroundColor= { postitColor } />
+                            </UlStyled>        
                     </Aside>
                 </MenuWrap>
-
-            {/* </NavbarStyled> */}
         </>
 
     )

@@ -2,15 +2,22 @@ import React from 'react';
 import styled from 'styled-components';
 
 const ButtonStyled = styled.button `
-    height: 40px;
-    width: 150px;
+    height: 50px;
+    width: 50px;
     margin-bottom: 20px;
+    margin: 5px;
     cursor: pointer;
+    border-radius: 50%;
+    outline: none;
+    background-color: ${props => props.backgroundColor};
 
     @media screen and (max-width: 768px) {
-    height: 40px;
-    width: 150px;
-    border: 1px solid black;
+        height: 50px;
+        width: 50px;
+        margin-bottom: 20px;
+        cursor: pointer;
+        border-radius: 50%;
+        outline: none;
     }
 `;
 
