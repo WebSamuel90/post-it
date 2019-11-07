@@ -72,13 +72,13 @@ function Modal (props) {
             <ModalStyled>
                 <ModalContent>
                     <ButtonStyled src="assets/imgs/close.png" onClick={ props.onClose }></ButtonStyled>
-                        <AddNote backgroundColor= { postitColor } width='170px'></AddNote>
-                            <ButtonPosition>
+                        <AddNote width='170px'></AddNote>
+                            {/* <ButtonPosition>
                                 <Button backgroundColor={ colors.Green } name="green" onClick={() => setPostitColor(colors.Green)}></Button>
                                 <Button backgroundColor={ colors.Pink } name="pink" onClick={() => setPostitColor(colors.Pink)}></Button>
                                 <Button backgroundColor={ colors.Purple } name="purple" onClick={() => setPostitColor(colors.Purple)}></Button>
                                 <Button backgroundColor={ colors.Yellow } name="yellow" onClick={() => setPostitColor(colors.Yellow)}></Button>
-                            </ButtonPosition>
+                            </ButtonPosition> */}
                     </ModalContent>
                 { props.children }
              </ModalStyled>

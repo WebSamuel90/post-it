@@ -3,43 +3,45 @@ import { firestore, auth } from '../firebase';
 import styled from 'styled-components';
 import ContentEditable from 'react-contenteditable';
 import sanitizeHtml from "sanitize-html";
+import Button from './Button';
 
-// const InputStyled = styled.div`
-//     padding: 15px 25px;
-//     box-shadow: 2px 4px 6px #444;
-//     width: 250px;
-//     height: 150px;
-//     margin: 10px;
-//     cursor: pointer;
-//     text-align:center;
+const ButtonPosition = styled.div`
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    // width: 40vw;
+    border: red solid 2px;
+`;
 
-//     @media screen and (max-width: 768px) {
-//         width: 250px;
-//         height: 250px;
-//     }
-// `;
+const FormStyled = styled.form`
+    border: red solid 2px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`;
 
-// const InputStyled = {
-//     padding: '15px 25px',
-//     boxShadow: '2px 4px 6px #444',
-//     backgroundColor: '#ffc',
-//     height: '150px',
-//     margin: '10px',
-//     cursor: 'pointer',
-//     overflow: 'hidden',
-//     display: 'flex',
-//     justifyContent: 'center',
-//     alignItems: 'center',
-//     flexWrap: 'wrap',
-//     resize: 'none',
-//     outline: 'none',
-// }
+const DivStyled = styled.div`
+    display: flex;
+    flex-direction: row;
+`;
 
 const AddNote = (props) => {
+    const [content, setContent] = useState('');
+    
+    const colors = {
+        Green: '#cdffcd',
+        Yellow:'#ffc',
+        Pink: '#FFB6C1',
+        Purple: '#ccccff'
+    }
+
+    const [postitColor, setPostitColor] = useState(colors.Yellow)
+
     const InputStyled = {
         padding: '15px 25px',
         boxShadow: '2px 4px 6px #444',
-        backgroundColor: props.backgroundColor,
+        backgroundColor: postitColor,
         height: '150px',
         width: props.width,
         margin: '10px',
@@ -52,7 +54,8 @@ const AddNote = (props) => {
         resize: 'none',
         outline: 'none',
     }
-    const [content, setContent] = useState('');
+
+
 
     const sanitize = () => {
         
@@ -66,7 +69,7 @@ const AddNote = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const { uid, displayName, email } = auth.currentUser || {};
+        // const { uid, displayName, email } = auth.currentUser || {};
 
         const xPos = 0;
         const yPos = 0;
@@ -75,6 +78,7 @@ const AddNote = (props) => {
             content,
             xPos,
             yPos,
+            postitColor,
             likes: 0,
             user: {
                 uid: null,
@@ -100,9 +104,16 @@ const AddNote = (props) => {
                     html={content}
                     onBlur={sanitize}
                     {...props}
-                    >
+                >
              
-                    </ContentEditable>
+                </ContentEditable>
+                <DivStyled>
+                    <Button backgroundColor={ colors.Green } onClick={() => setPostitColor(colors.Green)} >Green</Button>
+                    <Button backgroundColor={ colors.Pink } onClick={() => setPostitColor(colors.Pink)} >Pink</Button>
+                    <Button backgroundColor={ colors.Purple } onClick={() => setPostitColor(colors.Purple)} >Purple</Button>
+                    <Button backgroundColor={ colors.Yellow } onClick={() => setPostitColor(colors.Yellow)} >Yellow</Button>
+                </DivStyled>
+
                 <input type="submit" value="Create Note" />
             </form>
         </>
