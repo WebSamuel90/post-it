@@ -84,11 +84,11 @@ function Modal (props) {
              </ModalStyled>
         );
 
-        return (
-            <>
-                {dialog}
-            </>
-          );
+            return (
+                <>
+                    {dialog}
+                </>
+        );
     };
 
 export default Modal;

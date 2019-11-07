@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import Modal from '../components/Modal';
+import BackButton from '../components/BackButton';
+import { Link } from 'react-router-dom'; 
 // import ModalButton from '../components/ModalButton';
 import styled from 'styled-components';
 
@@ -20,13 +22,6 @@ const WrapperStyled = styled.div`
     //     flex-direction: column;
     //     justify-content: flex-end;
     // }
-`;
-
-const BlurBackground = styled.div`
-    width: 100vw;
-    height: 100vh;
-    filter: blur(3px);
-    // position: absolute;
 `;
 
 const H1 = styled.h1`
@@ -68,11 +63,11 @@ const User = () => {
 
         return (
             <>
-    
-            <WrapperStyled id="background">
-                <BlurBackground className="blur"></BlurBackground>
-
-                <H1>User page</H1>
+            <Link to='/'><BackButton img="assets/imgs/left.png"/></Link>
+                <WrapperStyled id="background">
+                    
+            
+                    <H1>User page</H1>
                 
                    {openButton && <Modal openButton='false' onClose={() => setOpenButton(false)}>
                     

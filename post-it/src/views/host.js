@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import Board from '../components/Board';
+import '../DarkMode.css';
 
 import Navbar from '../components/Navbar';
 import Notes from "../components/Notes";
@@ -26,7 +26,7 @@ const PostitWrapperStyled = styled.div`
     display: flex;
     width: 100%;
     height: 100vh;
-    background-color: pink;
+    // background-color: pink;
     flex-direction: row;
     align-items: center;
     justify-content: center;
@@ -35,7 +35,20 @@ const PostitWrapperStyled = styled.div`
 
 `;
 
-const Host = () => {
+
+const Host = (props) => {
+    // const [darkMode, setDarkMode] = useState(getInitialMode);
+
+    // useEffect(() => {
+    //     localStorage.setItem("dark", JSON.stringify(darkMode));
+    // }, [darkMode]);
+
+    // function getInitialMode() {
+    //     const savedMode = JSON.parse(localStorage.getItem('dark'));
+    //     return savedMode || false;
+    // }
+
+    
 //    const [backgroundColor, setBackgroundColor] = useState(colors.Yellow)
 
 // const colors = {
@@ -45,15 +58,17 @@ const Host = () => {
   //  Blue: '#ADD8E6'
 // }
 
-    return (
-        <>
-            <h1>Host page</h1>
-            <Navbar />
+        return (
+           
+            <div>
 
-            <PostitWrapperStyled>
+                <h1>Host page</h1>
+                  
+                        <Navbar />
                 <Notes />
-            </PostitWrapperStyled>
-        </>
+
+        </div>
+      
     );
 }
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, Switch } from "react-router-dom";
 import { createBrowserHistory } from 'history';
+import GlobalStyle from './styles/Global';
 import './App.css';
 
 import Home from './views';
@@ -19,8 +20,9 @@ const App = () => {
           <Route path="/host" exact component={Host}/>
           <Route path="/user" exact component={User}/>
         </Switch>
+        <GlobalStyle />
         </div>
-     
+
     </div>
   );
 }

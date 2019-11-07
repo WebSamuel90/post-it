@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom'; 
-import NavbarSignIn from './NavbarSignIn';
 import AddNote from './AddNote';
+import '../DarkMode.css'
 import Authentication from './Authentication';
+
 
 
 const MenuWrap = styled.div`
@@ -11,6 +12,7 @@ const MenuWrap = styled.div`
     top: 0;
     right: 0; 
     z-index: 1;
+
 
     .toggler {
         position: absolute;
@@ -40,7 +42,7 @@ const MenuWrap = styled.div`
         position: relative;
         width: 80%;
         height: 2px;
-        background-color: black;
+        background-color: var(--main-div-color);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -64,6 +66,7 @@ const MenuWrap = styled.div`
 
     .toggler:checked + .hamburger > div {
         transform: rotate(135deg);
+        background-color: var(--main-li-color);
     }
 
     .toggler:checked + .hamburger > div:before,
@@ -72,22 +75,20 @@ const MenuWrap = styled.div`
         transform: rotate(90deg);
     }
 
-    .toggler:checked:hover + .hamburger > div {
-        transform: rotate(225deg);
-    }
+    // .toggler:checked:hover + .hamburger > div {
+    //     transform: rotate(225deg);
+    // }
 
 
-    .toggler:checked ~ .nav-sidebar {
-        // visibility: visible;
+    .toggler:checked ~ .sidebar {
         right: 0;
         transition: all 0.3s ease-in-out;
     }
-
 `;
 
 const Aside = styled.aside`
     position: fixed; 
-    background-color: aqua;
+    background-color: var(--main-nav-color);
     bottom: 0; 
     right: -300px; 
     width: 300px;
@@ -102,31 +103,31 @@ const Aside = styled.aside`
 
 const UlStyled = styled.ul`
     display: flex;
-    height: 100%;
+    height: 85vh;
     width: 100%;
     flex-direction: column;
     list-style-type: none;
     justify-content: space-around;
-    text-align: start;
     overflow: hidden; 
     // visibility: hidden;
+    color: var(--main-li-color);
     margin: 0;
     padding-top: 15px;
 
     a {
         text-decoration: none;
-        display: block;
-        height: 60px;
-        padding: 0 10px;
-        font-size: 16px;
-        text-transform: uppercase;
-        white-space: nowrap;
-    
     }
 
     .button:checked ~ ul {
         display: block;
         transition: all 0.3s ease-in-out;
+        animation: load 0.3s forwards;
+
+        @keyframes load {
+            100% {
+                opacity: 1;
+            }
+        }
     }
 `;
 
@@ -135,26 +136,37 @@ const LiStyled = styled.li`
     flex-direction: row;
     list-style-type: none;
     text-transform: uppercase;
-    margin: 10px;
-    color: black;
+    text-decoration: none;
+    width: 210px;
+    // border-bottom: 1px solid #fff;
+    font-size: 20px;
+    margin-left: 45px;
+    color: var(--main-li-color);
     // line-height: 60px;
     // padding: 1rem;
 
+    button {
+        background-color: var(--main-nav-color);
+    }
 `;
 
 const MembersUl = styled.ul`
     display: none;
+    opacity: 0;
     position: absolute;
-    width: 30vw;
-    height: 150px;
+    width: 210px;
+    height: 100%;
     margin-top: 25px;
     line-height: 40px;
     background-color: pink;
-
+    text-decoration: none;
+    
     li {
         margin: 0;
         padding: 0 1em;
         width: 30vw;
+        text-align: start;
+        list-style: none;
     }
 `;
 
@@ -171,48 +183,100 @@ const ImgStyled = styled.img`
     width: 20px;
     height: 20px;
     cursor: pointer;
-    margin-left: 10px;
+    color: #fff;
+    margin-left: 20px;
+    fill: var(--main-li-color);
 `;
 
-const colors = {
-    Green: '#cdffcd',
-    Yellow:'#ffc',
-    Pink: '#FFB6C1',
-    Purple: '#ccccff'
-}
+const NotePosition = styled.div`
+    width: 100%;
+    display: flex; 
+    justify-content: center;
+`;
+
 
 function Navbar (props) {
-    const [postitColor, setPostitColor] = useState(colors.Yellow)
+    const [darkMode, setDarkMode] = useState(getInitialMode);
+
+    useEffect(() => {
+        localStorage.setItem("dark", JSON.stringify(darkMode));
+    }, [darkMode]);
+
+    function getInitialMode() {
+        const savedMode = JSON.parse(localStorage.getItem('dark'));
+        return savedMode || false;
+    }
+
+
+
+    const handleToggleColor = () => {
+        const style = document.documentElement.style;
+
+        setDarkMode(darkMode => !darkMode);
+
+    
+        if (darkMode === false) {
+            style.setProperty("--main-div-color", "#fff");
+            style.setProperty("--main-font-color", "#fff");
+            style.setProperty("--main-li-color", "#333");
+            style.setProperty("--main-ul-color", "#333");
+            style.setProperty("--main-bg-color", "#666666");
+            style.setProperty("--main-nav-color", "#fff");
+        } else {
+            style.setProperty("--main-div-color", "#333");
+            style.setProperty("--main-font-color", "#333");
+            style.setProperty("--main-li-color", "#fff");
+            style.setProperty("--main-ul-color", "#fff");
+            style.setProperty("--main-bg-color", "#fff");
+            style.setProperty("--main-nav-color", "#666666");
+        }
+
+        
+    }
+  
 
     return(
-        <>
-            <MenuWrap className='menu-wrap'>
-            {/* <NavbarStyled> */}
+    
+            <MenuWrap>
                 <input type="checkbox" className='toggler'/>
                     <div className='hamburger'>
                         <div></div>
-                
-                    </div>
-                {/* <ButtonStyled onClick={ props.onClose }>x</ButtonStyled> */}
+                            </div>
+                    
+                    <Aside className="sidebar" id='sidebar'>
+                        <UlStyled className="ul">
+                            <Link to='/'><LiStyled>Home</LiStyled></Link>
 
-                <Aside className="nav-sidebar" id='sidebar'>
-                    <UlStyled>
-                        <LiStyled>Home</LiStyled>
-                        <Authentication />
-                        <LiStyled>Members
-                            <InputStyled type='checkbox' className="button"></InputStyled>
-                            <ImgStyled src='assets/imgs/arrow.svg'/>
-                            <MembersUl>
-                                <li>1</li>
-                                <li>2</li>
-                                <li>3</li>
-                            </MembersUl>
-                            </LiStyled>
-                        <AddNote width='170px' backgroundColor= { postitColor } />
-                    </UlStyled>        
-                </Aside>
+                                <LiStyled>Dark Mode
+                                    <div className="toggle-container"> 
+                                        <button 
+                                            onClick={handleToggleColor}
+                                            >
+                                            Toggle mode
+                                        </button>
+                                    </div>
+                                </LiStyled>
+
+                                    <Link to='/'><LiStyled>Help</LiStyled></Link>
+
+                                    <LiStyled>Members
+                                        <InputStyled type='checkbox' className="button"></InputStyled>
+                                            
+                                            <ImgStyled src='assets/imgs/arrow.svg'/>
+                                                <MembersUl>
+                                                    <li>1</li>
+                                                    <li>2</li>
+                                                    <li>3</li>
+                                                </MembersUl>
+                                         </LiStyled>
+                                    <NotePosition>
+                                <AddNote width='130px' />
+                            </NotePosition> 
+                        </UlStyled>        
+                    </Aside>
             </MenuWrap>
-        </>
+
+
 
     )
 }
