@@ -69,7 +69,7 @@ const AddNote = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const { uid, displayName, email } = auth.currentUser || {};
+        // const { uid, displayName, email } = auth.currentUser || {};
 
         const xPos = 0;
         const yPos = 0;
