@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom'; 
+// import ToggleButton from './ToggleButton';
 import AddNote from './AddNote';
+import NavbarLink from './NavbarLink';
+import Line from './Line';
 import '../DarkMode.css'
 import Authentication from './Authentication';
 
@@ -131,112 +134,15 @@ const UlStyled = styled.ul`
     }
 `;
 
-const LiStyled = styled.li`
-    display: flex;
-    flex-direction: row;
-    list-style-type: none;
-    text-transform: uppercase;
-    text-decoration: none;
-    width: 210px;
-    // border-bottom: 1px solid #fff;
-    font-size: 20px;
-    margin-left: 45px;
-    color: var(--main-li-color);
-    // line-height: 60px;
-    // padding: 1rem;
-
-    button {
-        background-color: var(--main-nav-color);
-    }
-`;
-
-const MembersUl = styled.ul`
-    display: none;
-    opacity: 0;
-    position: absolute;
-    width: 210px;
-    height: 100%;
-    margin-top: 25px;
-    line-height: 40px;
-    background-color: pink;
-    text-decoration: none;
-    
-    li {
-        margin: 0;
-        padding: 0 1em;
-        width: 30vw;
-        text-align: start;
-        list-style: none;
-    }
-`;
-
-const InputStyled = styled.input`
-    position: absolute;
-    z-index: 2;
-    cursor: pointer;
-    width: 150px;
-    height: 20px;
-    opacity: 0;
-`;
-
-const ImgStyled = styled.img`
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-    color: #fff;
-    margin-left: 20px;
-    fill: var(--main-li-color);
-`;
-
 const NotePosition = styled.div`
     width: 100%;
     display: flex; 
     justify-content: center;
 `;
 
-
 function Navbar (props) {
-    const [darkMode, setDarkMode] = useState(getInitialMode);
-
-    useEffect(() => {
-        localStorage.setItem("dark", JSON.stringify(darkMode));
-    }, [darkMode]);
-
-    function getInitialMode() {
-        const savedMode = JSON.parse(localStorage.getItem('dark'));
-        return savedMode || false;
-    }
-
-
-
-    const handleToggleColor = () => {
-        const style = document.documentElement.style;
-
-        setDarkMode(darkMode => !darkMode);
-
-    
-        if (darkMode === false) {
-            style.setProperty("--main-div-color", "#fff");
-            style.setProperty("--main-font-color", "#fff");
-            style.setProperty("--main-li-color", "#333");
-            style.setProperty("--main-ul-color", "#333");
-            style.setProperty("--main-bg-color", "#666666");
-            style.setProperty("--main-nav-color", "#fff");
-        } else {
-            style.setProperty("--main-div-color", "#333");
-            style.setProperty("--main-font-color", "#333");
-            style.setProperty("--main-li-color", "#fff");
-            style.setProperty("--main-ul-color", "#fff");
-            style.setProperty("--main-bg-color", "#fff");
-            style.setProperty("--main-nav-color", "#666666");
-        }
-
-        
-    }
-  
 
     return(
-    
             <MenuWrap>
                 <input type="checkbox" className='toggler'/>
                     <div className='hamburger'>
@@ -245,30 +151,8 @@ function Navbar (props) {
                     
                     <Aside className="sidebar" id='sidebar'>
                         <UlStyled className="ul">
-                            <Link to='/'><LiStyled>Home</LiStyled></Link>
-
-                                <LiStyled>Dark Mode
-                                    <div className="toggle-container"> 
-                                        <button 
-                                            onClick={handleToggleColor}
-                                            >
-                                            Toggle mode
-                                        </button>
-                                    </div>
-                                </LiStyled>
-
-                                    <Link to='/'><LiStyled>Help</LiStyled></Link>
-
-                                    <LiStyled>Members
-                                        <InputStyled type='checkbox' className="button"></InputStyled>
-                                            
-                                            <ImgStyled src='assets/imgs/arrow.svg'/>
-                                                <MembersUl>
-                                                    <li>1</li>
-                                                    <li>2</li>
-                                                    <li>3</li>
-                                                </MembersUl>
-                                         </LiStyled>
+                            <NavbarLink />
+                            
                                     <NotePosition>
                                 <AddNote width='130px' />
                             </NotePosition> 
