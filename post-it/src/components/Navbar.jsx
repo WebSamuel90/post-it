@@ -16,6 +16,9 @@ const MenuWrap = styled.div`
     right: 0; 
     z-index: 1;
 
+    // @media screen and (max-width: 768px) {
+    //     visibility: hidden;
+    // }
 
     .toggler {
         position: absolute;
@@ -45,7 +48,7 @@ const MenuWrap = styled.div`
         position: relative;
         width: 80%;
         height: 2px;
-        background-color: var(--main-div-color);
+        background-color: var(--main-burger-color);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -102,6 +105,7 @@ const Aside = styled.aside`
     justify-content: flex-start;
     z-index: 1000px;
     transition: all 0.3s ease-in-out;
+
 `;
 
 const UlStyled = styled.ul`
@@ -140,6 +144,18 @@ const NotePosition = styled.div`
     justify-content: center;
 `;
 
+const QRPosition = styled.div`
+width: 100%;
+display: flex; 
+justify-content: center;
+
+`;
+
+const QR = styled.div`
+    height: 100px;
+    width: 100px;
+    border: 1px solid red;
+`;
 function Navbar (props) {
 
     return(
@@ -154,8 +170,11 @@ function Navbar (props) {
                             <NavbarLink />
                             
                                     <NotePosition>
-                                <AddNote width='130px' />
+                                <AddNote width='10em' height='10em' />
                             </NotePosition> 
+                                <QRPosition>
+                                    <QR></QR>
+                            </QRPosition>
                         </UlStyled>        
                     </Aside>
             </MenuWrap>

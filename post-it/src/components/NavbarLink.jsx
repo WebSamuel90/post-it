@@ -24,11 +24,12 @@ const MembersUl = styled.ul`
     display: none;
     opacity: 0;
     position: absolute;
-    width: 210px;
-    height: 100%;
+    border: 1px solid black;
+    width: 140px;
+    height: 130px;
     margin-top: 25px;
     line-height: 40px;
-    background-color: pink;
+    background-color: #fff;
     text-decoration: none;
     
     li {
@@ -55,7 +56,8 @@ const ImgStyled = styled.img`
     cursor: pointer;
     color: #fff;
     margin-left: 20px;
-    fill: var(--main-li-color);
+
+  
 `;
 
 
@@ -76,8 +78,8 @@ const NavbarLink = () => {
 
                     <LiStyled>Members
                         <InputStyled type='checkbox' className="button"></InputStyled>
-                            <ImgStyled src='assets/imgs/arrow.svg'/>
-
+                            <ImgStyled src='assets/imgs/arrow-down.svg'/>
+        
                         <MembersUl>
                             <li>1</li>
                             <li>2</li>

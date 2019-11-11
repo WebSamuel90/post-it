@@ -24,6 +24,18 @@ const FormStyled = styled.form`
 const DivStyled = styled.div`
     display: flex;
     flex-direction: row;
+    justify-content: center;
+`;
+
+const ButtonStyled = styled.input`
+    box-shadow: 2px 4px 6px #444;
+    margin-top: 20px;
+    border-radius: 20px;
+    width: 220px;
+    height: 50px;
+    background-color: #fff;
+    cursor: pointer;
+
 `;
 
 const AddNote = (props) => {
@@ -42,8 +54,9 @@ const AddNote = (props) => {
         padding: '15px 25px',
         boxShadow: '2px 4px 6px #444',
         backgroundColor: postitColor,
-        height: '150px',
+        height: props.height,
         width: props.width,
+        color: '#333',
         margin: '10px',
         cursor: 'pointer',
         overflow: 'hidden',
@@ -114,7 +127,7 @@ const AddNote = (props) => {
                     <Button backgroundColor={ colors.Yellow } onClick={() => setPostitColor(colors.Yellow)} >Yellow</Button>
                 </DivStyled>
 
-                <input type="submit" value="Create Note" />
+                <ButtonStyled type="submit" value="Create Note"></ButtonStyled>
             </form>
         </>
     );

@@ -29,7 +29,7 @@ const LiStyled = styled.li`
 `;
 
 const ImgStyled = styled.img `
-    height: 25px;
+    height: 29px;
 `;
 
 

@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import Draggable from 'react-draggable';
 
 const NoteStyled = styled.div`
+    display: flex;
+    flex-direction: row-reverse;
     padding: 15px 25px;
     box-shadow: 2px 4px 6px #444;
     background-color: ${props => props.postitColor};
@@ -14,12 +16,53 @@ const NoteStyled = styled.div`
     cursor: pointer;
     position: absolute;
 
-    @media screen and (max-width: 768px) {
-        height: 50px;
-        width: 50px;
+    // @media screen and (max-width: 768px) {
+    //     height: 50px;
+    //     width: 50px;
+    // }
+`;
+
+const ButtonPlacement = styled.div`
+    width: 18px;
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    justify-content: space-between;
+`;
+
+const ButtonLike = styled.img`
+    width: 20px;
+    height: 20px;
+`;
+
+const ButtonDelete = styled.img`
+    width: 20px;
+    height: 20px;
+`;
+
+const ContentPlacement = styled.div`
+    width: 100%;
+    height: 100%;
+    display: flex; 
+    margin-left: 20px;
+    align-items: center;
+    justify-content: center;
+
+    p {
+        color: #333;
     }
 `;
-    
+
+const LikePlacement = styled.div`
+    display: flex;
+    flex-direction: row;
+    margin: 5px;
+
+    p {
+        color: #333;
+    }
+`;
+ 
 const Note = ({id, content, likes, xPos, yPos, postitColor}) => {
     
     const noteRef = firestore.doc(`notes/${id}`);
@@ -35,10 +78,19 @@ const Note = ({id, content, likes, xPos, yPos, postitColor}) => {
     return ( 
         <Draggable onStop={handleOnstop} position={{x: xPos, y: yPos}}>
             <NoteStyled {...{postitColor}}>
-                <p>{content}</p>
-                <p>{likes === 0 ? null : likes}</p>
-                <button className="like" onClick={like}>Like</button>
-                <button className="delete" onClick={remove}>X</button>
+                <ButtonPlacement>
+                    <LikePlacement>
+                        <p>{likes === 0 ? null : likes}</p>
+                        <ButtonLike src="assets/imgs/star.svg" className="like" onClick={like}></ButtonLike>
+                    </LikePlacement>
+                    <ButtonDelete src="assets/imgs/delete.svg"  className="delete" onClick={remove}></ButtonDelete>
+
+                </ButtonPlacement>
+
+                <ContentPlacement>
+                    <p>{content}</p>
+                </ContentPlacement>
+               
             </NoteStyled>
         </Draggable>
      );
