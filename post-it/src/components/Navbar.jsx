@@ -16,6 +16,9 @@ const MenuWrap = styled.div`
     right: 0; 
     z-index: 1;
 
+    // @media screen and (max-width: 768px) {
+    //     visibility: hidden;
+    // }
 
     .toggler {
         position: absolute;
@@ -102,6 +105,7 @@ const Aside = styled.aside`
     justify-content: flex-start;
     z-index: 1000px;
     transition: all 0.3s ease-in-out;
+
 `;
 
 const UlStyled = styled.ul`

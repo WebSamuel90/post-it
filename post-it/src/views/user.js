@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Modal from '../components/Modal';
 import BackButton from '../components/BackButton';
+import Navbar from '../components/Navbar';
 import Notes from '../components/Notes';
 import { Link } from 'react-router-dom'; 
 // import ModalButton from '../components/ModalButton';
@@ -52,6 +53,11 @@ const ModalButton = styled.img`
     width: 40px;
     cursor: pointer;
     margin-bottom: 50px;
+    visibility: hidden;
+
+    @media screen and (max-width: 768px) {
+        visibility: visible;
+    }
 `;
 
 const User = () => {
@@ -60,16 +66,15 @@ const User = () => {
         return (
             <>
             <Link to='/'><BackButton img="assets/imgs/left.png"/></Link>
-                <WrapperStyled id="background">
-                    <H1>User page</H1>
-                        <NotesPlacement>
-                            <Notes />
-                        </NotesPlacement>
-                            {openButton && <Modal openButton='false' onClose={() => setOpenButton(false)}>
-                                </Modal>}
-                    
-                            {/* <ModalButton onClick={() => setOpenButton(true)}></ModalButton>  */}
-                        <ModalButton src={openButton === false ? "assets/imgs/plus.png" : null} name="modal" onClick={() => setOpenButton(true)}  ></ModalButton>
+               <Navbar />
+                    <WrapperStyled id="background">
+                        <H1>User page</H1>
+                            <NotesPlacement>
+                                <Notes />
+                                    </NotesPlacement>
+                                {openButton && <Modal openButton='false' onClose={() => setOpenButton(false)}>
+                            </Modal>}
+                        <ModalButton src={openButton === false ? "assets/imgs/plus.png" : null} name="modal" onClick={() => setOpenButton(true)}></ModalButton>
                 </WrapperStyled>
             
             </>

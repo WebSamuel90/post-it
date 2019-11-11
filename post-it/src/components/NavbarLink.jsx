@@ -24,11 +24,12 @@ const MembersUl = styled.ul`
     display: none;
     opacity: 0;
     position: absolute;
-    width: 210px;
-    height: 100%;
+    border: 1px solid black;
+    width: 140px;
+    height: 130px;
     margin-top: 25px;
     line-height: 40px;
-    background-color: pink;
+    background-color: #fff;
     text-decoration: none;
     
     li {

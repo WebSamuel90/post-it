@@ -43,25 +43,39 @@ const LabelDiv = styled.label`
   }
   `;
 
-const ToggleButton = (props) => {
-    const [darkMode, setDarkMode] = useState(getInitialMode);
+const ToggleButton = () => {
+    const [darkMode, setDarkMode] = useState(getInitialMode());
 
       useEffect(() => {
         localStorage.setItem("dark", JSON.stringify(darkMode));
+        handleToggleColor()
+
     }, [darkMode]);
 
+    useEffect(() => {
+        
+    }, []);
+
     function getInitialMode() {
-        const savedMode = JSON.parse(localStorage.getItem('dark'));
-        return savedMode || false;
+        console.log('hej');
+        
+        const savedMode = JSON.parse(localStorage.getItem("dark"));
+        console.log(savedMode);
+        
+        return savedMode;
+        
+    }
+
+    const toggleDarkMode = () => {
+        setDarkMode(!darkMode)
+        handleToggleColor();
     }
 
     const handleToggleColor = () => {
         const style = document.documentElement.style;
 
-        setDarkMode(darkMode => !darkMode);
-
     
-        if (darkMode === false) {
+        if (darkMode) {
             style.setProperty("--main-burger-color", "#333");
             style.setProperty("--main-div-color", "#fff");
             style.setProperty("--main-font-color", "#fff");
@@ -84,7 +98,7 @@ const ToggleButton = (props) => {
 
     return(
         <LabelDiv>
-            <input onClick={handleToggleColor} type='checkbox' id='toggle' />
+            <input onClick={toggleDarkMode} defaultChecked={darkMode} type='checkbox' id='toggle' />
             <label for='toggle'></label>
         </LabelDiv>
     )

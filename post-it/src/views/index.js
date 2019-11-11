@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom'; 
 import HomeButton from '../components/HomeButton';
 import styled from 'styled-components';
@@ -38,6 +38,28 @@ const HostPlacement = styled.div`
     }
 `;
 
+const InputStyled = styled.input`
+    height: 45px;
+    width: 200px;
+    font-size: 30px;
+    margin-bottom: 20px;
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    margin: 5px;
+    cursor: pointer;
+    cursor: pointer;
+    box-shadow: 2px 4px 6px #444;
+    outline: none;
+    background-color: #ffc;
+    text-align: center;
+
+    ::placeholder {
+        color: #333;
+        // text-transform: uppercase;
+      }
+`;
 const ImgPlacement = styled.div`
     width: 100%;
     position: absolute;
@@ -57,6 +79,12 @@ const ImgStyled= styled.img`
 
 
 const Home = () => {
+    const [code, setCode] = useState('');
+
+    const setCodes = () => {
+        setCode('');
+      };
+
     return (
             <>
                 <WrapperStyled>
@@ -66,10 +94,16 @@ const Home = () => {
                                 </ImgPlacement>
                                     <H1>Stick.IT!</H1>
                                 <HostPlacement>
-                            <Link to="/Host"><HomeButton name="Host" color='#ffc'/></Link>
-                        <Link to="/User"><HomeButton name="User" color='#cdffcd'/></Link>
+                            <InputStyled 
+                                placeholder='Enter code'
+                                value={code}
+                                onChange={e => setCode(e.target.value)}
+                                type='text'
+                                id='userText1'
+                            />
+                        <Link to="/User"><HomeButton onClick={setCodes} name="User" color='#cdffcd'/></Link>
                     </HostPlacement>
-                <Link to="/User"><HomeButton name="Create Board" color='#ccccff' marginBottom="50px" /></Link>
+                <Link to="/Host"><HomeButton name="Create Board" color='#ccccff' marginBottom="50px" /></Link>
             </WrapperStyled>
         </>
         
