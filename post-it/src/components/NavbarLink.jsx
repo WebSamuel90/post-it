@@ -55,7 +55,8 @@ const ImgStyled = styled.img`
     cursor: pointer;
     color: #fff;
     margin-left: 20px;
-    fill: var(--main-li-color);
+
+  
 `;
 
 
@@ -76,8 +77,8 @@ const NavbarLink = () => {
 
                     <LiStyled>Members
                         <InputStyled type='checkbox' className="button"></InputStyled>
-                            <ImgStyled src='assets/imgs/arrow.svg'/>
-
+                            <ImgStyled src='assets/imgs/arrow-down.svg'/>
+        
                         <MembersUl>
                             <li>1</li>
                             <li>2</li>

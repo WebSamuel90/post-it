@@ -16,7 +16,7 @@ const ModalStyled = styled.div`
     border-radius: 8px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     flex-direction: column;
     transition: all 0.4s ease;
     border: 1px solid black;
@@ -28,7 +28,7 @@ const ModalContent = styled.div`
     align-items: center;
     justify-content: center;
     border-radius: 30px;
-    background-color: #fff;
+    // background-color: #fff;
     width: 500px;
     height: 600px;
 
@@ -72,7 +72,7 @@ function Modal (props) {
             <ModalStyled>
                 <ModalContent>
                     <ButtonStyled src="assets/imgs/close.png" onClick={ props.onClose }></ButtonStyled>
-                        <AddNote width='170px'></AddNote>
+                        <AddNote width='15em' height='15em'></AddNote>
                             {/* <ButtonPosition>
                                 <Button backgroundColor={ colors.Green } name="green" onClick={() => setPostitColor(colors.Green)}></Button>
                                 <Button backgroundColor={ colors.Pink } name="pink" onClick={() => setPostitColor(colors.Pink)}></Button>
