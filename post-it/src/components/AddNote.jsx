@@ -5,6 +5,7 @@ import ContentEditable from 'react-contenteditable';
 import sanitizeHtml from "sanitize-html";
 import Button from './Button';
 
+
 const ButtonPosition = styled.div`
     display: flex;
     flex-direction: row;
@@ -27,15 +28,46 @@ const DivStyled = styled.div`
     justify-content: center;
 `;
 
-const ButtonStyled = styled.input`
-    box-shadow: 2px 4px 6px #444;
-    margin-top: 20px;
-    border-radius: 20px;
-    width: 220px;
-    height: 50px;
-    background-color: #fff;
-    cursor: pointer;
+const ButtonPlacement = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+`;
 
+const ButtonStyled = styled.input`
+    height: 45px;
+    width: 200px;
+    margin-bottom: 20px;
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    margin: 5px;
+    cursor: pointer;
+    cursor: pointer;
+    box-shadow: 2px 4px 6px #444;
+    font-family: 'Happy Monkey', sans-serif;
+    font-size: 18px;
+    outline: none;
+    background-color: ${props => props.color};
+
+    @media screen and (max-width: 768px) {
+        height: 45px;
+        width: 200px;
+        margin-bottom: 20px;
+        display: flex; 
+        align-items: center;
+        justify-content: center;
+        flex-direction: row;
+        margin: 5px;
+        cursor: pointer;
+        cursor: pointer;
+        box-shadow: 2px 4px 6px #444;
+        font-family: 'Happy Monkey', sans-serif;
+        font-size: 18px;
+        outline: none;
+        background-color: ${props => props.color};
+    }
 `;
 
 const AddNote = (props) => {
@@ -126,8 +158,9 @@ const AddNote = (props) => {
                     <Button backgroundColor={ colors.Purple } onClick={() => setPostitColor(colors.Purple)} >Purple</Button>
                     <Button backgroundColor={ colors.Yellow } onClick={() => setPostitColor(colors.Yellow)} >Yellow</Button>
                 </DivStyled>
-
-                <ButtonStyled type="submit" value="Create Note"></ButtonStyled>
+                <ButtonPlacement>
+                    <ButtonStyled type="submit" value="Create Note" color='#fff'></ButtonStyled>
+                </ButtonPlacement>
             </form>
         </>
     );

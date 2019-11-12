@@ -23,6 +23,8 @@ const WrapperStyled = styled.div`
 const H1 = styled.h1`   
     color: #fff;
     text-transform: uppercase;
+    font-family: 'Finger Paint', cursive;
+    font-size: 50px;
 `;
 
 const HostPlacement = styled.div`
@@ -54,6 +56,7 @@ const InputStyled = styled.input`
     outline: none;
     background-color: #ffc;
     text-align: center;
+    font-family: 'Happy Monkey', sans-serif;
 
     ::placeholder {
         color: #333;
@@ -101,7 +104,7 @@ const Home = () => {
                                 type='text'
                                 id='userText1'
                             />
-                        <Link to="/User"><HomeButton onClick={setCodes} name="User" color='#cdffcd'/></Link>
+                        <Link to="/User"><HomeButton onClick={setCodes} type="submit" name="Enter" color='#cdffcd'/></Link>
                     </HostPlacement>
                 <Link to="/Host"><HomeButton name="Create Board" color='#ccccff' marginBottom="50px" /></Link>
             </WrapperStyled>

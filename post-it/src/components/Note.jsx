@@ -50,6 +50,7 @@ const ContentPlacement = styled.div`
 
     p {
         color: #333;
+        font-family: 'Happy Monkey', sans-serif;
     }
 `;
 
@@ -60,6 +61,7 @@ const LikePlacement = styled.div`
 
     p {
         color: #333;
+        font-family: 'Happy Monkey', sans-serif;
     }
 `;
  

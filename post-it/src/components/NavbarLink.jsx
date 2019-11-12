@@ -38,6 +38,7 @@ const MembersUl = styled.ul`
         width: 30vw;
         text-align: start;
         list-style: none;
+        color: #333;
     }
 `;
 
@@ -56,13 +57,11 @@ const ImgStyled = styled.img`
     cursor: pointer;
     color: #fff;
     margin-left: 20px;
-
-  
 `;
 
 
 
-const NavbarLink = () => {
+const NavbarLink = (props) => {
     return (
         <>
             <Link to='/'>

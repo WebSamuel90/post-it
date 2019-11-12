@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import Modal from '../components/Modal';
 import BackButton from '../components/BackButton';
-import Navbar from '../components/Navbar';
 import Notes from '../components/Notes';
+import Navbar from '../components/Navbar';
 import { Link } from 'react-router-dom'; 
 // import ModalButton from '../components/ModalButton';
 import styled from 'styled-components';
@@ -14,7 +14,7 @@ const WrapperStyled = styled.div`
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
-    background-color: pink;
+    background-color: #F7FDFF;
     
     @media screen and (max-width: 768px) {
         right: 0;
@@ -36,14 +36,15 @@ const NotesPlacement = styled.div`
     height: 100vh;
     display: flex;
     justify-content: center;
-    transform: scale(0.5);
+    transform: scale(0.7);
     overflow: hidden;
     border: 1px solid black;
+    background-color: var(--main-bg-color);
 
     @media screen and (max-width: 768px) {
-        width: 700px;
+        width: 1200px;
         height: 100vh;
-        transform: scale(0.5);
+        transform: scale(0.3);
 
     }
 `;
@@ -60,18 +61,18 @@ const ModalButton = styled.img`
     }
 `;
 
-const User = () => {
+const User = (props) => {
     const [openButton, setOpenButton] = useState(false)
 
         return (
             <>
-            <Link to='/'><BackButton img="assets/imgs/left.png"/></Link>
-               <Navbar />
-                    <WrapperStyled id="background">
-                        <H1>User page</H1>
-                            <NotesPlacement>
-                                <Notes />
-                                    </NotesPlacement>
+                <BackButton img="assets/imgs/left.png"/>
+                    <Navbar backgroundColor="#333"/>
+                        <WrapperStyled id="background">
+                            <H1>User page</H1>
+                                <NotesPlacement>
+                                    <Notes />
+                                        </NotesPlacement>
                                 {openButton && <Modal openButton='false' onClose={() => setOpenButton(false)}>
                             </Modal>}
                         <ModalButton src={openButton === false ? "assets/imgs/plus.png" : null} name="modal" onClick={() => setOpenButton(true)}></ModalButton>
