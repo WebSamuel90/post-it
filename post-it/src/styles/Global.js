@@ -32,10 +32,10 @@ const GlobalStyle = createGlobalStyle`
 
 
 body {
-  // background-color: var(--main-bg-color);
+  // background-color: #FCFFEB ;
   color: var(--main-font-color);
   text-align: center;
-
+  font-family: 'Roboto', sans-serif;
   // display: block;
 }
 

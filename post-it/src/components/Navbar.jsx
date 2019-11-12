@@ -15,10 +15,11 @@ const MenuWrap = styled.div`
     top: 0;
     right: 0; 
     z-index: 1;
+    display: block;
 
-    // @media screen and (max-width: 768px) {
-    //     visibility: hidden;
-    // }
+    @media screen and (max-width: 768px) {
+        display: none;
+    }
 
     .toggler {
         position: absolute;
@@ -48,7 +49,7 @@ const MenuWrap = styled.div`
         position: relative;
         width: 80%;
         height: 2px;
-        background-color: var(--main-burger-color);
+        background-color: ${props => props.backgroundColor};
         display: flex;
         align-items: center;
         justify-content: center;
@@ -159,7 +160,7 @@ const QR = styled.div`
 function Navbar (props) {
 
     return(
-            <MenuWrap>
+            <MenuWrap {...props}>
                 <input type="checkbox" className='toggler'/>
                     <div className='hamburger'>
                         <div></div>

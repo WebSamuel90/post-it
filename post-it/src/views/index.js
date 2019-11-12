@@ -26,6 +26,8 @@ const WrapperStyled = styled.div`
 const H1 = styled.h1`   
     color: #fff;
     text-transform: uppercase;
+    font-family: 'Finger Paint', cursive;
+    font-size: 50px;
 `;
 
 const HostPlacement = styled.div`
@@ -57,6 +59,7 @@ const InputStyled = styled.input`
     outline: none;
     background-color: #ffc;
     text-align: center;
+    font-family: 'Happy Monkey', sans-serif;
 
     ::placeholder {
         color: #333;

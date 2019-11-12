@@ -5,6 +5,7 @@ import styled from 'styled-components';
 const LabelDiv = styled.label`
     width: 60px;
     height: 20px;
+
   a {
       color: #fff;
       text-decoration: none;
@@ -16,9 +17,15 @@ const LabelDiv = styled.label`
       background-color: grey;
       border-radius: 20px;
       transition: all 0.3s;
-      cursor: pointer;
-    
+      cursor: pointer; 
+      display: ${props => props.hide};
+
+      @media screen and (max-width: 768px) {
+        display: ${props => props.show};
+
+      }
   }
+
   label::after {
       content: '';
       position: absolute;
@@ -43,7 +50,7 @@ const LabelDiv = styled.label`
   }
   `;
 
-const ToggleButton = () => {
+const ToggleButton = (props) => {
     const [darkMode, setDarkMode] = useState(getInitialMode());
 
       useEffect(() => {
@@ -76,7 +83,7 @@ const ToggleButton = () => {
 
     
         if (darkMode) {
-            style.setProperty("--main-burger-color", "#333");
+            style.setProperty("--main-burger-color", "#fff");
             style.setProperty("--main-div-color", "#fff");
             style.setProperty("--main-font-color", "#fff");
             style.setProperty("--main-li-color", "#333");
@@ -97,7 +104,7 @@ const ToggleButton = () => {
     }
 
     return(
-        <LabelDiv>
+        <LabelDiv {...props}>
             <input onClick={toggleDarkMode} defaultChecked={darkMode} type='checkbox' id='toggle' />
             <label for='toggle'></label>
         </LabelDiv>

@@ -1,5 +1,8 @@
 import React from 'react'; 
 import styled from 'styled-components';
+import Navbar from './Navbar';
+import ToggleButton from './ToggleButton';
+import { Link } from 'react-router-dom'; 
 
 const DivStyled = styled.div`
     height: 51px;
@@ -17,7 +20,7 @@ const UlStyled = styled.ul`
     align-items: center;
     align-content: center;
     text-decoration: none;
-    margin: 0;
+    margin-top: 20px;
     padding: 0;
 `;
 
@@ -37,7 +40,8 @@ const BackButton = (props) => {
     return(
         <DivStyled>
             <UlStyled { ...props }>
-                <LiStyled>{props.goTo}<ImgStyled src={props.img} alt=''></ImgStyled></LiStyled>
+                <Link to='/'><LiStyled>{props.goTo}<ImgStyled src={props.img} alt=''></ImgStyled></LiStyled></Link>
+                <ToggleButton show="block" hide="none"/>
             </UlStyled>
         </DivStyled>
 

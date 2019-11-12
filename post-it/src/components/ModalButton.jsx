@@ -5,7 +5,7 @@ const ModalButtonStyled = styled.img `
 
 `;
 
-function ModalButton () {
+const ModalButton = () => {
         return ( 
                 <ModalButtonStyled src='assets/imgs/plus.svg'
               

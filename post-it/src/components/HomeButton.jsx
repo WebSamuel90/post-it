@@ -14,6 +14,7 @@ const ButtonStyled = styled.div `
     // border-radius: 50%;
     cursor: pointer;
     box-shadow: 2px 4px 6px #444;
+    font-family: 'Happy Monkey', sans-serif;
     outline: none;
     background-color: ${props => props.color};
     margin-bottom: ${props => props.marginBottom};
