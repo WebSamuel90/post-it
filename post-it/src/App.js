@@ -7,6 +7,7 @@ import './App.css';
 import Home from './views';
 import Host from './views/host';
 import User from './views/user';
+import Board from './views/board';
 
 const history = createBrowserHistory()
 
@@ -19,6 +20,7 @@ const App = () => {
           <Route path="/" exact component={Home}/>
           <Route path="/host" exact component={Host}/>
           <Route path="/user" exact component={User}/>
+          <Route path="/board/:id" exact component={Board}/>
         </Switch>
         <GlobalStyle />
         </div>

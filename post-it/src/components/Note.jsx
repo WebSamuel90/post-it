@@ -64,10 +64,9 @@ const LikePlacement = styled.div`
         font-family: 'Happy Monkey', sans-serif;
     }
 `;
- 
-const Note = ({id, content, likes, xPos, yPos, postitColor}) => {
     
-    const noteRef = firestore.doc(`notes/${id}`);
+const Note = ({id, content, likes, xPos, yPos, postitColor, boardId}) => {
+    const noteRef = firestore.collection('boards').doc(`${boardId}`).collection('notes').doc(`${id}`)
     const remove = () => noteRef.delete();
     const like = () => noteRef.update({ likes: likes + 1 });
     
