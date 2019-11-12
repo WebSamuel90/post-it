@@ -16,6 +16,8 @@ const LabelDiv = styled.label`
       background-color: grey;
       border-radius: 20px;
       transition: all 0.3s;
+      cursor: pointer;
+    
   }
   label::after {
       content: '';
@@ -27,6 +29,7 @@ const LabelDiv = styled.label`
       top: 1px;
       left: 1px;
       transition: all 0.3s;
+      cursor: pointer;
   }
   input:checked + label::after {
       left: 20px;
@@ -40,25 +43,40 @@ const LabelDiv = styled.label`
   }
   `;
 
-const ToggleButton = (props) => {
-    const [darkMode, setDarkMode] = useState(getInitialMode);
+const ToggleButton = () => {
+    const [darkMode, setDarkMode] = useState(getInitialMode());
 
       useEffect(() => {
         localStorage.setItem("dark", JSON.stringify(darkMode));
+        handleToggleColor()
+
     }, [darkMode]);
 
+    useEffect(() => {
+        
+    }, []);
+
     function getInitialMode() {
-        const savedMode = JSON.parse(localStorage.getItem('dark'));
-        return savedMode || false;
+        console.log('hej');
+        
+        const savedMode = JSON.parse(localStorage.getItem("dark"));
+        console.log(savedMode);
+        
+        return savedMode;
+        
+    }
+
+    const toggleDarkMode = () => {
+        setDarkMode(!darkMode)
+        handleToggleColor();
     }
 
     const handleToggleColor = () => {
         const style = document.documentElement.style;
 
-        setDarkMode(darkMode => !darkMode);
-
     
-        if (darkMode === false) {
+        if (darkMode) {
+            style.setProperty("--main-burger-color", "#333");
             style.setProperty("--main-div-color", "#fff");
             style.setProperty("--main-font-color", "#fff");
             style.setProperty("--main-li-color", "#333");
@@ -66,6 +84,7 @@ const ToggleButton = (props) => {
             style.setProperty("--main-bg-color", "#666666");
             style.setProperty("--main-nav-color", "#fff");
         } else {
+            style.setProperty("--main-burger-color", "#333");
             style.setProperty("--main-div-color", "#333");
             style.setProperty("--main-font-color", "#333");
             style.setProperty("--main-li-color", "#fff");
@@ -79,7 +98,7 @@ const ToggleButton = (props) => {
 
     return(
         <LabelDiv>
-            <input onClick={handleToggleColor} type='checkbox' id='toggle' />
+            <input onClick={toggleDarkMode} defaultChecked={darkMode} type='checkbox' id='toggle' />
             <label for='toggle'></label>
         </LabelDiv>
     )

@@ -1,54 +1,42 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
-import '../DarkMode.css';
 
 import Navbar from '../components/Navbar';
 import Notes from "../components/Notes";
 import Authentication from '../components/Authentication';
 
+const BoardPosition = styled.div`
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+`; 
 
 const BoardWrapperStyled = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: aqua;
-    width: 1000px;
-    height: 1000px;
-    overflow: hidden;
-    margin: 25px;
-    padding: 15px;
-    transform: scale(0.5);
-    border: red solid 2px;
-    
-`;
-
-const PostitWrapperStyled = styled.div`
-    display: flex;
-    width: 100%;
+    background-color: var(--main-bg-color);
+    width: 100vw;
     height: 100vh;
-    // background-color: pink;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    padding: 15px;
-    border: blue solid 2px;
+    overflow: hidden;
+    // margin: 25px;
+    // padding: 15px;
+    border: 1px solid black;
+    // transform: scale(0.5);
 
+    @media screen and (max-width: 768px) {
+        width: 700px;
+        // position: absolute;
+        height: 100vh;
+        transform: scale(0.5);
+        // display: flex; 
+        // flex-direction: column;
+    }
 `;
 
-
-const Host = (props) => {
-    // const [darkMode, setDarkMode] = useState(getInitialMode);
-
-    // useEffect(() => {
-    //     localStorage.setItem("dark", JSON.stringify(darkMode));
-    // }, [darkMode]);
-
-    // function getInitialMode() {
-    //     const savedMode = JSON.parse(localStorage.getItem('dark'));
-    //     return savedMode || false;
-    // }
-
-    
+const Host = () => {
 //    const [backgroundColor, setBackgroundColor] = useState(colors.Yellow)
 
 // const colors = {
@@ -58,17 +46,15 @@ const Host = (props) => {
   //  Blue: '#ADD8E6'
 // }
 
-        return (
-           
-            <div>
-
+    return (
+        <BoardPosition>
+        <Navbar />
+            <BoardWrapperStyled>
                 <h1>Host page</h1>
-                  
-                        <Navbar />
+                    {/* <Navbar /> */}
                 <Notes />
-
-        </div>
-      
+            </BoardWrapperStyled>
+        </BoardPosition>
     );
 }
 

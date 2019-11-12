@@ -7,7 +7,7 @@ const ModalStyled = styled.div`
     width: 100%;
     height: 100%;
     margin: 0 auto;
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0,0,0,0.8);
     position: fixed; 
     left: 50%;
     top: 50%;
@@ -16,7 +16,7 @@ const ModalStyled = styled.div`
     border-radius: 8px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     flex-direction: column;
     transition: all 0.4s ease;
     border: 1px solid black;
@@ -26,9 +26,9 @@ const ModalContent = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
     border-radius: 30px;
-    background-color: #fff;
+    // background-color: #fff;
     width: 500px;
     height: 600px;
 
@@ -50,12 +50,13 @@ const ButtonPosition = styled.div`
 const ButtonStyled = styled.img`
     padding: 3px 8px; 
     cursor: pointer; 
-    margin-right: 40px;
+    margin-top: 40px;
     border: none; 
     width: 30px; 
     height: 30px;
     font-weight: bold; 
-    align-self: flex-end;
+    align-self: center;
+    color: #fff;
 `;
 
 const colors = {
@@ -71,8 +72,8 @@ function Modal (props) {
         const dialog = (
             <ModalStyled>
                 <ModalContent>
-                    <ButtonStyled src="assets/imgs/close.png" onClick={ props.onClose }></ButtonStyled>
-                        <AddNote width='170px'></AddNote>
+                    <AddNote width='15em' height='15em'></AddNote>
+                        <ButtonStyled src="assets/imgs/close.svg" onClick={ props.onClose }></ButtonStyled>
                             {/* <ButtonPosition>
                                 <Button backgroundColor={ colors.Green } name="green" onClick={() => setPostitColor(colors.Green)}></Button>
                                 <Button backgroundColor={ colors.Pink } name="pink" onClick={() => setPostitColor(colors.Pink)}></Button>

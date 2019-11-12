@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import Modal from '../components/Modal';
 import BackButton from '../components/BackButton';
+import Navbar from '../components/Navbar';
+import Notes from '../components/Notes';
 import { Link } from 'react-router-dom'; 
 // import ModalButton from '../components/ModalButton';
 import styled from 'styled-components';
@@ -14,14 +16,14 @@ const WrapperStyled = styled.div`
     align-items: center;
     background-color: pink;
     
-
-    // @media screen and (max-width: 992px) {
-    //     width: 100%;
-    //     height: 100vh;
-    //     display: flex; 
-    //     flex-direction: column;
-    //     justify-content: flex-end;
-    // }
+    @media screen and (max-width: 768px) {
+        right: 0;
+        bottom: 0;
+        width: 100vw;
+        height: 100vh;
+        display: flex; 
+        flex-direction: column;
+    }
 `;
 
 const H1 = styled.h1`
@@ -29,52 +31,50 @@ const H1 = styled.h1`
     top: 0; 
 `; 
 
-const ModalButton = styled.img`
-    height: 100px;
-    width: 100px;
-    cursor: pointer;
+const NotesPlacement = styled.div`
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    transform: scale(0.5);
+    overflow: hidden;
+    border: 1px solid black;
+
+    @media screen and (max-width: 768px) {
+        width: 700px;
+        height: 100vh;
+        transform: scale(0.5);
+
+    }
 `;
 
-// const NavbarButton = styled.button`
-//     height: 200px;
-//     width: 100px;
-//     cursor: pointer;
-//     color: pink;
-// `;
+const ModalButton = styled.img`
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+    margin-bottom: 50px;
+    visibility: hidden;
 
-// const NavbarButtonPlacement = styled.div`
-//     width: 100vw;
-//     height: 50px;
-//     top: 0;
-//     left: 0;
-//     display: flex;
-//     flex-direction: row; 
-//     justify-content: flex-start;
-
-// `;
+    @media screen and (max-width: 768px) {
+        visibility: visible;
+    }
+`;
 
 const User = () => {
     const [openButton, setOpenButton] = useState(false)
 
-    function blurBackground() {
-        document.getElementById('background').className = "blur";
-
-    }
-
         return (
             <>
             <Link to='/'><BackButton img="assets/imgs/left.png"/></Link>
-                <WrapperStyled id="background">
-                    
-            
-                    <H1>User page</H1>
-                
-                   {openButton && <Modal openButton='false' onClose={() => setOpenButton(false)}>
-                    
-                    </Modal>}
-                    
-                    {/* <ModalButton onClick={() => setOpenButton(true)}></ModalButton>  */}
-                    <ModalButton src={openButton === false ? "assets/imgs/plus.svg" : null} name="modal" onClick={() => setOpenButton(true)}  ></ModalButton>
+               <Navbar />
+                    <WrapperStyled id="background">
+                        <H1>User page</H1>
+                            <NotesPlacement>
+                                <Notes />
+                                    </NotesPlacement>
+                                {openButton && <Modal openButton='false' onClose={() => setOpenButton(false)}>
+                            </Modal>}
+                        <ModalButton src={openButton === false ? "assets/imgs/plus.png" : null} name="modal" onClick={() => setOpenButton(true)}></ModalButton>
                 </WrapperStyled>
             
             </>
