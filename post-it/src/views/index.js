@@ -1,11 +1,9 @@
 import React, {useState} from 'react';
 import { Link } from 'react-router-dom'; 
 import { firestore } from '../firebase';
-import Button from '../components/Button';
 import HomeButton from '../components/HomeButton';
 import styled from 'styled-components';
 import shortid from 'shortid';
-import { collectIdsAndDocs } from '../utilities';
 import { useCollection } from 'react-firebase-hooks/firestore';
 
 const WrapperStyled = styled.div`
@@ -116,34 +114,25 @@ const Home = () => {
         }   
     }
 
-
     return (
             <>
                 <WrapperStyled>
-                    <Link to="/Host"><Button name="Host" /></Link>
-                    <Link to="/User"><Button name="User" /></Link>
-                    <input type="text" onChange={handleChange} ></input>
-                    <Link to={joinBoard !== '' ? `board/${joinBoard}` : '/'} ><Button onClick={handleJoin} name="Join Board" /></Link>
-                    <Link to={`/board/${pageId}`} ><Button onClick={handleCreate} name="Create Board" /></Link>
-
                     <ImgPlacement>
                         <ImgStyled src="assets/imgs/information.svg"></ImgStyled>
-                            <ImgStyled src="assets/imgs/user.svg"></ImgStyled>
-                                </ImgPlacement>
-                                    <H1>Stick.IT!</H1>
-                                <HostPlacement>
-                            <InputStyled 
-                                placeholder='Enter code'
-                                value={code}
-                                onChange={e => setCode(e.target.value)}
-                                type='text'
-                                id='userText1'
-                            />
-                        <Link to="/User"><HomeButton onClick={setCodes} name="User" color='#cdffcd'/></Link>
+                        <ImgStyled src="assets/imgs/user.svg"></ImgStyled>
+                    </ImgPlacement>
+                    <H1>Stick.IT!</H1>
+                    <HostPlacement>
+                        <InputStyled 
+                            placeholder='Enter code'
+                            onChange={handleChange}
+                            type='text'
+                        />
+                        <Link to={joinBoard !== '' ? `board/${joinBoard}` : '/'}><HomeButton onClick={handleJoin} name="Join Board" color='#cdffcd'/></Link>
                     </HostPlacement>
-                <Link to="/Host"><HomeButton name="Create Board" color='#ccccff' marginBottom="50px" /></Link>
-            </WrapperStyled>
-        </>
+                    <Link to={`/board/${pageId}`}><HomeButton onClick={handleCreate} name="Create Board" color='#ccccff' marginBottom="50px" /></Link>
+                </WrapperStyled>
+            </>
         
         );
     }
