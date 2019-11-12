@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { firestore, auth } from '../firebase';
 import styled from 'styled-components';
 import ContentEditable from 'react-contenteditable';
 import sanitizeHtml from "sanitize-html";
 import Button from './Button';
+import { withRouter } from 'react-router-dom';
 
 const ButtonPosition = styled.div`
     display: flex;
@@ -27,6 +28,7 @@ const DivStyled = styled.div`
 `;
 
 const AddNote = (props) => {
+
     const [content, setContent] = useState('');
     
     const colors = {
@@ -54,8 +56,6 @@ const AddNote = (props) => {
         resize: 'none',
         outline: 'none',
     }
-
-
 
     const sanitize = () => {
         
@@ -86,8 +86,9 @@ const AddNote = (props) => {
                 email: null,
             }
         };
+        const getBoardId = props.match.params.id;
         
-        firestore.collection('notes').add(note)
+        firestore.collection('boards').doc(getBoardId).collection('/notes').add(note)
         .then(() => {
             setContent('')
         });
@@ -120,4 +121,4 @@ const AddNote = (props) => {
     );
 }
 
-export default AddNote;
+export default withRouter(AddNote);
