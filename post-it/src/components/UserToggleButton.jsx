@@ -18,12 +18,12 @@ const LabelDiv = styled.label`
       border-radius: 20px;
       transition: all 0.3s;
       cursor: pointer; 
-    //   display: ${props => props.hide};
+      display: ${props => props.hide};
 
-    //   @media screen and (max-width: 768px) {
-    //     display: ${props => props.show};
+      @media screen and (max-width: 768px) {
+        display: ${props => props.show};
 
-    //   }
+      }
   }
 
   label::after {
@@ -50,14 +50,15 @@ const LabelDiv = styled.label`
   }
   `;
 
-const ToggleButton = () => {
-    const [darkMode, setDarkMode] = useState(getInitialMode());
+const UserToggleButton = (props) => {
+    const [switchMode, setSwitchMode] = useState(getInitialMode());
 
       useEffect(() => {
-        localStorage.setItem("dark", JSON.stringify(darkMode));
-        handleToggleColor()
+        localStorage.setItem("dark", JSON.stringify(switchMode));
+        handleSwitchColor()
 
-    }, [darkMode]);
+    }, [switchMode]);
+
 
     function getInitialMode() {
         const savedMode = JSON.parse(localStorage.getItem("dark"));
@@ -65,16 +66,16 @@ const ToggleButton = () => {
         
     }
 
-    const toggleDarkMode = () => {
-        setDarkMode(!darkMode)
-        handleToggleColor();
+    const toggleSwitchMode = () => {
+        setSwitchMode(!switchMode)
+        handleSwitchColor();
     }
 
-    const handleToggleColor = () => {
+    const handleSwitchColor = () => {
         const style = document.documentElement.style;
 
     
-        if (darkMode) {
+        if (switchMode) {
             style.setProperty("--main-burger-color", "#fff");
             style.setProperty("--main-div-color", "#fff");
             style.setProperty("--main-font-color", "#fff");
@@ -91,16 +92,15 @@ const ToggleButton = () => {
             style.setProperty("--main-bg-color", "#fff");
             style.setProperty("--main-nav-color", "#666666");
         }
-
         
     }
 
     return(
-        <LabelDiv>
-            <input onClick={toggleDarkMode} defaultChecked={darkMode} type='checkbox' id='toggle' />
-            <label for='toggle'></label>
+        <LabelDiv {...props}>
+            <input onClick={toggleSwitchMode} defaultChecked={switchMode} type='checkbox' id='switch' />
+            <label for='switch'></label>
         </LabelDiv>
     )
 }
 
-export default ToggleButton;
+export default UserToggleButton;

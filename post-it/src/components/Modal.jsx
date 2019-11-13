@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Button from './Button';
 import AddNote from './AddNote';
 import styled from 'styled-components';
 
@@ -39,14 +38,6 @@ const ModalContent = styled.div`
     }
 `;
 
-const ButtonPosition = styled.div`
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 40vw;
-`;
-
 const ButtonStyled = styled.img`
     padding: 3px 8px; 
     cursor: pointer; 
@@ -72,14 +63,8 @@ function Modal (props) {
         const dialog = (
             <ModalStyled>
                 <ModalContent>
-                    <AddNote width='15em' height='15em'></AddNote>
-                        <ButtonStyled src="assets/imgs/close.svg" onClick={ props.onClose }></ButtonStyled>
-                            {/* <ButtonPosition>
-                                <Button backgroundColor={ colors.Green } name="green" onClick={() => setPostitColor(colors.Green)}></Button>
-                                <Button backgroundColor={ colors.Pink } name="pink" onClick={() => setPostitColor(colors.Pink)}></Button>
-                                <Button backgroundColor={ colors.Purple } name="purple" onClick={() => setPostitColor(colors.Purple)}></Button>
-                                <Button backgroundColor={ colors.Yellow } name="yellow" onClick={() => setPostitColor(colors.Yellow)}></Button>
-                            </ButtonPosition> */}
+                    <AddNote width='15em' height='15em'/>
+                        <ButtonStyled src="../assets/imgs/close.svg" onClick={ props.onClose }></ButtonStyled>
                     </ModalContent>
                 { props.children }
              </ModalStyled>

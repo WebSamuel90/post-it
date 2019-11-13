@@ -33,11 +33,6 @@ const ModalButton = styled.img`
 const MemberAddNote = () => {
     const [openButton, setOpenButton] = useState(false)
 
-    function blurBackground() {
-        document.getElementById('background').className = "blur";
-
-    }
-
         return (
             <>
                 <Link to='/'><BackButton img="assets/imgs/left.png"/></Link>

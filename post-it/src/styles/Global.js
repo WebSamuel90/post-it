@@ -20,15 +20,15 @@ const GlobalStyle = createGlobalStyle`
   // box-sizing: border-box;
 }
 
-.dark-mode {
-  --main-burger-color: #333);
-  --main-div-color: #fff);
-  --main-font-color: #fff);
-  --main-li-color: #333);
-  --main-ul-color: #333);
-  --main-bg-color: #666666);
-  --main-nav-color: #fff);
-}
+// .dark-mode {
+//   --main-burger-color: #333);
+//   --main-div-color: #fff);
+//   --main-font-color: #fff);
+//   --main-li-color: #333);
+//   --main-ul-color: #333);
+//   --main-bg-color: #666666);
+//   --main-nav-color: #fff);
+// }
 
 
 body {

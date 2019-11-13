@@ -1,8 +1,8 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 import { Link } from 'react-router-dom'; 
 import styled from 'styled-components';
 import ToggleButton from './ToggleButton';
+import ArrowDown from './ArrowDown';
 import Line from './Line';
 
 const LiStyled = styled.li`
@@ -51,15 +51,6 @@ const InputStyled = styled.input`
     opacity: 0;
 `;
 
-const ImgStyled = styled.img`
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-    color: #fff;
-    margin-left: 20px;
-`;
-
-
 
 const NavbarLink = (props) => {
     return (
@@ -69,7 +60,7 @@ const NavbarLink = (props) => {
                     </Link>
                         <Line />
                             <LiStyled>Dark Mode
-                                <ToggleButton/>
+                                <ToggleButton />
                                     </LiStyled>
                                 <Line />
                             <Link to='/'><LiStyled>Help</LiStyled></Link>
@@ -77,8 +68,8 @@ const NavbarLink = (props) => {
 
                     <LiStyled>Members
                         <InputStyled type='checkbox' className="button"></InputStyled>
-                            <ImgStyled src='assets/imgs/arrow-down.svg'/>
-        
+                            <ArrowDown color="var(--main-font-color" height="20" width="20"/>
+                        
                         <MembersUl>
                             <li>1</li>
                             <li>2</li>
