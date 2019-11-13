@@ -1,6 +1,5 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import Navbar from '../components/Navbar';
-import MemberAddNote from '../components/MemberAddNote';
 import Notes from '../components/Notes';
 import BackButton from '../components/BackButton';
 import styled from 'styled-components';
@@ -8,6 +7,19 @@ import Modal from '../components/Modal';
 import { firestore } from 'firebase';
 import { withRouter } from 'react-router-dom';
 import { useDocument } from 'react-firebase-hooks/firestore';
+import styled from 'styled-components';
+
+const BoardStyled = styled.div`
+    width: 1500px;
+    height: 1000px;
+    // transform: perspective(200px) translate3d(0, 0, -100em);
+`;
+
+const NavBoardStyled = styled.div`
+    position: fixed;
+    left: 50%;
+    z-index: 5;
+`;
 
 const ModalButtonPlacement = styled.div`
     width: 100%;
@@ -78,7 +90,6 @@ const Board = (props) => {
         firestore().doc(`boards/${getBoardId}`)
     );
     
-
     const currentBoardId = value && value.id;
     const currentBoardName = value && value.data().boardName;
     
