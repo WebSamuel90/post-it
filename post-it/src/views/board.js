@@ -73,7 +73,7 @@ const Board = (props) => {
     return (
         <>
             {/* <BackButton img="../assets/imgs/left.png"/> */}
-            <Navbar backgroundColor="var(--main-div-color)"/> 
+            <Navbar boardId={currentBoardId} backgroundColor="var(--main-div-color)"/> 
 
             <H2>{currentBoardId}</H2>
                 <Notes boardId={currentBoardId} />

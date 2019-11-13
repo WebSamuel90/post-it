@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import AddNote from './AddNote';
 import NavbarLink from './NavbarLink';
 import '../DarkMode.css'
+import { QRCode } from "react-qr-svg";
 import Authentication from './Authentication';
 
 
@@ -172,7 +173,13 @@ function Navbar (props) {
                                     <AddNote width='10em' height='10em' />
                                 </NotePosition> 
                             <QRPosition>
-                                <QR></QR>
+                                <QRCode
+                                    bgColor="#FFFFFF"
+                                    fgColor="#000000"
+                                    level="Q"
+                                    style={{ width: 128 }}
+                                    value={`https://post-it-digital.firebaseapp.com/board/${props.boardId}`}
+                                />
                             </QRPosition>
                         </UlStyled>        
                     </Aside>
