@@ -7,7 +7,6 @@ import Modal from '../components/Modal';
 import { firestore } from 'firebase';
 import { withRouter } from 'react-router-dom';
 import { useDocument } from 'react-firebase-hooks/firestore';
-import styled from 'styled-components';
 
 const BoardStyled = styled.div`
     width: 1500px;
@@ -17,8 +16,13 @@ const BoardStyled = styled.div`
 
 const NavBoardStyled = styled.div`
     position: fixed;
+    top: 25px;
     left: 50%;
     z-index: 5;
+
+    @media screen and (max-width: 768px) {
+
+    }
 `;
 
 const ModalButtonPlacement = styled.div`
@@ -26,6 +30,8 @@ const ModalButtonPlacement = styled.div`
     display: flex; 
     flex-direction: column;
     justify-content: flex-end;
+    position: fixed;
+    top: 90%;
     align-items: center;
     // margin-bottom: 50px;
 `;
@@ -45,41 +51,12 @@ const ModalButton = styled.img`
 
 const H2 = styled.h2`
     font-family: 'Happy Monkey', sans-serif;
+    position: fixed;
+    top: 1%;
+    left: 50%;
+    z-index: 5;
 `;
 
-const BoardPosition = styled.div`
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    background-color: #fff;
-`; 
-
-const BoardWrapperStyled = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: absolute;
-    background-color: var(--main-bg-color);
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
-    border: 1px solid black;
-
-    @media screen and (max-width: 768px) {
-        width: 1200px;
-        height: 1553px;
-        position: relative;
-        height: 100vh;
-        // left: 50px;
-        transform: scale(0.3);
-        transform: origin 0 0;
-        // display: flex; 
-        // flex-direction: column;
-    }
-`;
 
 const Board = (props) => {
     const [openButton, setOpenButton] = useState(false)
@@ -91,25 +68,22 @@ const Board = (props) => {
     );
     
     const currentBoardId = value && value.id;
-    const currentBoardName = value && value.data().boardName;
+    // const currentBoardName = value && value.data().boardName;
     
     return (
-        <BoardPosition>
-            <BackButton img="../assets/imgs/left.png"/>
-            {/* {host === true ? <Navbar /> : <MemberAddNote />} */}
-                <Navbar backgroundColor="var(--main-div-color)"/> 
-                    <BoardWrapperStyled>
-                        <H2>{currentBoardName}</H2>
-                            <H2>{currentBoardId}</H2>
-                                {/* <MemberAddNote /> */}
-                                <Notes boardId={currentBoardId} />
-                            </BoardWrapperStyled>
-                            {openButton && <Modal openButton='false' onClose={() => setOpenButton(false)}>
-                        </Modal>}
-                    <ModalButtonPlacement>
+        <>
+            {/* <BackButton img="../assets/imgs/left.png"/> */}
+            <Navbar backgroundColor="var(--main-div-color)"/> 
+
+            <H2>{currentBoardId}</H2>
+                <Notes boardId={currentBoardId} />
+      
+            {openButton && <Modal openButton='false' onClose={() => setOpenButton(false)} />}
+
+            <ModalButtonPlacement>
                 <ModalButton src={openButton === false ? "../assets/imgs/plus.png" : null} name="modal" onClick={() => setOpenButton(true)}></ModalButton>
             </ModalButtonPlacement>
-        </BoardPosition>
+        </>
     )
 }
 
