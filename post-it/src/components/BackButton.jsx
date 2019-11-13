@@ -1,7 +1,6 @@
 import React from 'react'; 
 import styled from 'styled-components';
-import Navbar from './Navbar';
-import ToggleButton from './ToggleButton';
+import UserToggleButton from './UserToggleButton';
 import { Link } from 'react-router-dom'; 
 
 const DivStyled = styled.div`
@@ -9,7 +8,7 @@ const DivStyled = styled.div`
     width: 100vw;
     display: flex;
     justify-content: center;
-    position: absolute;
+    position: relative;
 `;
 
 const UlStyled = styled.ul`
@@ -41,7 +40,7 @@ const BackButton = (props) => {
         <DivStyled>
             <UlStyled { ...props }>
                 <Link to='/'><LiStyled>{props.goTo}<ImgStyled src={props.img} alt=''></ImgStyled></LiStyled></Link>
-                <ToggleButton show="block" hide="none"/>
+                <UserToggleButton show="block" hide="none"/>
             </UlStyled>
         </DivStyled>
 

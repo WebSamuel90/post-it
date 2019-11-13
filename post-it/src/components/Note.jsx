@@ -57,12 +57,14 @@ const ContentPlacement = styled.div`
 const LikePlacement = styled.div`
     display: flex;
     flex-direction: row;
-    margin: 5px;
+    justify-content: space-between;
+`;
 
-    p {
-        color: #333;
-        font-family: 'Happy Monkey', sans-serif;
-    }
+const P = styled.p`
+    color: #333;
+    font-family: 'Happy Monkey', sans-serif;
+    margin-right: 5px;
+    font-size: 18px;
 `;
     
 const Note = ({id, content, likes, xPos, yPos, postitColor, boardId}) => {
@@ -81,17 +83,14 @@ const Note = ({id, content, likes, xPos, yPos, postitColor, boardId}) => {
             <NoteStyled {...{postitColor}}>
                 <ButtonPlacement>
                     <LikePlacement>
-                        <p>{likes === 0 ? null : likes}</p>
-                        <ButtonLike src="assets/imgs/star.svg" className="like" onClick={like}></ButtonLike>
-                    </LikePlacement>
-                    <ButtonDelete src="assets/imgs/delete.svg"  className="delete" onClick={remove}></ButtonDelete>
-
-                </ButtonPlacement>
-
-                <ContentPlacement>
+                        <P>{likes === 0 ? null : likes}</P>
+                            <ButtonLike src="../assets/imgs/star.svg" className="like" onClick={like}></ButtonLike>
+                                </LikePlacement>
+                                <ButtonDelete src="../assets/imgs/delete.svg"  className="delete" onClick={remove}></ButtonDelete>
+                            </ButtonPlacement>
+                        <ContentPlacement>
                     <p>{content}</p>
                 </ContentPlacement>
-               
             </NoteStyled>
         </Draggable>
      );

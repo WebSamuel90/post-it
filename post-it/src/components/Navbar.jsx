@@ -1,10 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom'; 
 // import ToggleButton from './ToggleButton';
 import AddNote from './AddNote';
 import NavbarLink from './NavbarLink';
-import Line from './Line';
 import '../DarkMode.css'
 import Authentication from './Authentication';
 
@@ -146,9 +144,9 @@ const NotePosition = styled.div`
 `;
 
 const QRPosition = styled.div`
-width: 100%;
-display: flex; 
-justify-content: center;
+    width: 100%;
+    display: flex; 
+    justify-content: center;
 
 `;
 
@@ -157,6 +155,7 @@ const QR = styled.div`
     width: 100px;
     border: 1px solid red;
 `;
+
 function Navbar (props) {
 
     return(
@@ -169,19 +168,15 @@ function Navbar (props) {
                     <Aside className="sidebar" id='sidebar'>
                         <UlStyled className="ul">
                             <NavbarLink />
-                            
-                                    <NotePosition>
-                                <AddNote width='10em' height='10em' />
-                            </NotePosition> 
-                                <QRPosition>
-                                    <QR></QR>
+                                <NotePosition>
+                                    <AddNote width='10em' height='10em' />
+                                </NotePosition> 
+                            <QRPosition>
+                                <QR></QR>
                             </QRPosition>
                         </UlStyled>        
                     </Aside>
             </MenuWrap>
-
-
-
     )
 }
 
