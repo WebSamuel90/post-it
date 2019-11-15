@@ -81,7 +81,7 @@ const Board = (props) => {
             {openButton && <Modal openButton='false' onClose={() => setOpenButton(false)} />}
 
             <ModalButtonPlacement>
-                <ModalButton src={openButton === false ? "../assets/imgs/plus.png" : null} name="modal" onClick={() => setOpenButton(true)}></ModalButton>
+                <ModalButton src={openButton === false ? "../assets/imgs/plus.png" : null} name="modal" onClick={() => setOpenButton(true)} />
             </ModalButtonPlacement>
         </>
     )

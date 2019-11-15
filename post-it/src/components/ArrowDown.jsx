@@ -6,7 +6,7 @@ const Svg = styled.svg`
 `;
 
 const ArrowDown = (props) => {
-    return(
+    return (
             <Svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
      width='20px' height='20px' viewBox="0 0 451.847 451.847" fill='var(--main-li-color)'
 	 xmlSpace="preserve">

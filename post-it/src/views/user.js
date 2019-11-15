@@ -64,23 +64,23 @@ const ModalButton = styled.img`
 const User = (props) => {
     const [openButton, setOpenButton] = useState(false)
 
-        return (
-            <>
-                <BackButton img="assets/imgs/left.png"/>
-                    <Navbar backgroundColor="#333"/>
-                        <WrapperStyled id="background">
-                            <H1>User page</H1>
-                                <NotesPlacement>
-                                    <Notes />
-                                        </NotesPlacement>
-                                {openButton && <Modal openButton='false' onClose={() => setOpenButton(false)}>
-                            </Modal>}
-                        <ModalButton src={openButton === false ? "assets/imgs/plus.png" : null} name="modal" onClick={() => setOpenButton(true)}></ModalButton>
-                </WrapperStyled>
+    return (
+        <>
+            <BackButton img="assets/imgs/left.png"/>
+            <Navbar backgroundColor="#333"/>
             
-            </>
-        
-        );
-    }
+            <WrapperStyled id="background">
+                <H1>User page</H1>
+                <NotesPlacement>
+                    <Notes />
+                </NotesPlacement>
+
+                {openButton && <Modal openButton='false' onClose={() => setOpenButton(false)} />}
+
+                <ModalButton src={openButton === false ? "assets/imgs/plus.png" : null} name="modal" onClick={() => setOpenButton(true)}></ModalButton>
+            </WrapperStyled>
+        </>
+    );
+}
 
 export default User;

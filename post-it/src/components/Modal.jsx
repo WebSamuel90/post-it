@@ -50,31 +50,20 @@ const ButtonStyled = styled.img`
     color: #fff;
 `;
 
-const colors = {
-    Green: '#cdffcd',
-    Yellow:'#ffc',
-    Pink: '#FFB6C1',
-    Purple: '#ccccff'
-}
 
 function Modal (props) {
-    const [postitColor, setPostitColor] = useState(colors.Yellow)
 
-        const dialog = (
+    return (
+        <>
             <ModalStyled>
                 <ModalContent>
                     <AddNote width='15em' height='15em'/>
-                        <ButtonStyled src="../assets/imgs/close.svg" onClick={ props.onClose }></ButtonStyled>
-                    </ModalContent>
+                    <ButtonStyled src="../assets/imgs/close.svg" onClick={ props.onClose }></ButtonStyled>
+                </ModalContent>
                 { props.children }
-             </ModalStyled>
-        );
-
-            return (
-                <>
-                    {dialog}
-                </>
-        );
-    };
+            </ModalStyled>
+        </>
+    );
+};
 
 export default Modal;

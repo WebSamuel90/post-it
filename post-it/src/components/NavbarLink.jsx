@@ -57,26 +57,26 @@ const NavbarLink = (props) => {
         <>
             <Link to='/'>
                 <LiStyled>Home</LiStyled>
-                    </Link>
-                        <Line />
-                            <LiStyled>Dark Mode
-                                <ToggleButton />
-                                    </LiStyled>
-                                <Line />
-                            <Link to='/'><LiStyled>Help</LiStyled></Link>
-                        <Line />
+            </Link>
+            <Line />
+            <LiStyled>Dark Mode
+                <ToggleButton />
+            </LiStyled>
+            <Line />
+            <Link to='/'><LiStyled>Help</LiStyled></Link>
+            <Line />
 
-                    <LiStyled>Members
-                        <InputStyled type='checkbox' className="button"></InputStyled>
-                            <ArrowDown color="var(--main-font-color" height="20" width="20"/>
-                        
-                        <MembersUl>
-                            <li>1</li>
-                            <li>2</li>
-                            <li>3</li>
-                        </MembersUl>
-                    </LiStyled>
-                <Line />
+            <LiStyled>Members
+                <InputStyled type='checkbox' className="button"></InputStyled>
+                <ArrowDown color="var(--main-font-color" height="20" width="20"/>
+                
+                <MembersUl>
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                </MembersUl>
+            </LiStyled>
+            <Line />
         </>
     )
 }
