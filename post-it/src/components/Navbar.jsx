@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import AddNote from './AddNote';
 import NavbarLink from './NavbarLink';
 import '../DarkMode.css'
+import { QRCode } from "react-qr-svg";
 import Authentication from './Authentication';
 
 
@@ -158,25 +159,31 @@ const QR = styled.div`
 
 function Navbar (props) {
 
-    return(
-            <MenuWrap {...props}>
-                <input type="checkbox" className='toggler'/>
-                    <div className='hamburger'>
-                        <div></div>
-                            </div>
-                    
-                    <Aside className="sidebar" id='sidebar'>
-                        <UlStyled className="ul">
-                            <NavbarLink />
-                                <NotePosition>
-                                    <AddNote width='10em' height='10em' />
-                                </NotePosition> 
-                            <QRPosition>
-                                <QR></QR>
-                            </QRPosition>
-                        </UlStyled>        
-                    </Aside>
-            </MenuWrap>
+    return (
+        <MenuWrap {...props}>
+            <input type="checkbox" className='toggler'/>
+            <div className='hamburger'>
+                <div></div>
+            </div>
+                
+            <Aside className="sidebar" id='sidebar'>
+                <UlStyled className="ul">
+                    <NavbarLink />
+                    <NotePosition>
+                        <AddNote width='10em' height='10em' />
+                    </NotePosition> 
+                    <QRPosition>
+                        <QRCode
+                            bgColor="#FFFFFF"
+                            fgColor="#000000"
+                            level="Q"
+                            style={{ width: 128 }}
+                            value={`https://post-it-digital.firebaseapp.com/board/${props.boardId}`}
+                        />
+                    </QRPosition>
+                </UlStyled>        
+            </Aside>
+        </MenuWrap>
     )
 }
 

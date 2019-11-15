@@ -9,7 +9,7 @@ const DivStyled = styled.div`
 `;
 
 const Line = () => {
-  return <DivStyled></DivStyled>;
+	return <DivStyled></DivStyled>;
 };
 
 export default Line;

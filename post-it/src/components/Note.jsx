@@ -73,7 +73,7 @@ const P = styled.p`
     font-size: 18px;
 `;
     
-const Note = ({id, content, likes, xPos, yPos, postitColor, boardId}) => {
+const Note = ({ id, content, likes, xPos, yPos, postitColor, boardId }) => {
     const noteRef = firestore.collection('boards').doc(`${boardId}`).collection('notes').doc(`${id}`)
     const remove = () => noteRef.delete();
     const like = () => noteRef.update({ likes: likes + 1 });
@@ -90,11 +90,11 @@ const Note = ({id, content, likes, xPos, yPos, postitColor, boardId}) => {
                 <ButtonPlacement>
                     <LikePlacement>
                         <P>{likes === 0 ? null : likes}</P>
-                            <ButtonLike src="../assets/imgs/star.svg" className="like" onClick={like}></ButtonLike>
-                                </LikePlacement>
-                                <ButtonDelete src="../assets/imgs/delete.svg"  className="delete" onClick={remove}></ButtonDelete>
-                            </ButtonPlacement>
-                        <ContentPlacement>
+                        <ButtonLike src="../assets/imgs/star.svg" className="like" onClick={like}></ButtonLike>
+                    </LikePlacement>
+                    <ButtonDelete src="../assets/imgs/delete.svg"  className="delete" onClick={remove}></ButtonDelete>
+                </ButtonPlacement>
+                <ContentPlacement>
                     <p>{content}</p>
                 </ContentPlacement>
             </NoteStyled>

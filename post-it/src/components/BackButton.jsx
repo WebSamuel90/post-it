@@ -41,7 +41,7 @@ const ImgStyled = styled.img `
 
 
 const BackButton = (props) => {
-    return(
+    return (
         <>
             <UlStyled { ...props }>
             <Link to='/'><LiStyled> <ArrowLeft /></LiStyled></Link>

@@ -95,7 +95,7 @@ const ToggleButton = () => {
         
     }
 
-    return(
+    return (
         <LabelDiv>
             <input onClick={toggleDarkMode} defaultChecked={darkMode} type='checkbox' id='toggle' />
             <label for='toggle'></label>

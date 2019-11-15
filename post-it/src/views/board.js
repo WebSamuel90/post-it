@@ -85,7 +85,9 @@ const Board = (props) => {
             <H2Position>
                 <H2>{currentBoardId}</H2>
             </H2Position>
-                <Notes boardId={currentBoardId} />
+            {/* <BackButton img="../assets/imgs/left.png"/> */}
+            <Navbar boardId={currentBoardId} backgroundColor="var(--main-div-color)"/> 
+            <Notes boardId={currentBoardId} />
       
             {openButton && <Modal onClose={() => setOpenButton(false)} />}
 

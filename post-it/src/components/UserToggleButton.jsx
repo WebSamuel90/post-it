@@ -95,7 +95,7 @@ const UserToggleButton = (props) => {
         
     }
 
-    return(
+    return (
         <LabelDiv {...props}>
             <input onClick={toggleSwitchMode} defaultChecked={switchMode} type='checkbox' id='switch' />
             <label for='switch'></label>

@@ -12,21 +12,21 @@ import Board from './views/board';
 const history = createBrowserHistory()
 
 const App = () => {
-  return (
-    <div className="App">
+	return (
+		<div className="App">
     
-        <div history={history}>
-        <Switch>
-          <Route path="/" exact component={Home}/>
-          <Route path="/host" exact component={Host}/>
-          <Route path="/user" exact component={User}/>
-          <Route path="/board/:id" exact component={Board}/>
-        </Switch>
-        <GlobalStyle />
-        </div>
+			<div history={history}>
+			<Switch>
+				<Route path="/" exact component={Home}/>
+				<Route path="/host" exact component={Host}/>
+				<Route path="/user" exact component={User}/>
+				<Route path="/board/:id" exact component={Board}/>
+			</Switch>
+			<GlobalStyle />
+			</div>
 
-    </div>
-  );
+    	</div>
+  	);
 }
 
 export default App;

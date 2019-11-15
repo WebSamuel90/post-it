@@ -77,16 +77,17 @@ const Host = (props) => {
 
     <BoardPosition>
         <Navbar backgroundColor="var(--main-div-color)"/>
-            <BoardWrapperStyled>
-                <h1>Host page</h1>
-                    <Notes />
-                        </BoardWrapperStyled>
-                            {openButton && <Modal openButton='false' onClose={() => setOpenButton(false)}>
-                        </Modal>}
-                    <ModalButtonPlacement>
-                <ModalButton src={openButton === false ? "assets/imgs/plus.png" : null} name="modal" onClick={() => setOpenButton(true)}></ModalButton>
-            </ModalButtonPlacement>
-        </BoardPosition>
+        <BoardWrapperStyled>
+            <h1>Host page</h1>
+            <Notes />
+        </BoardWrapperStyled>
+
+        {openButton && <Modal openButton='false' onClose={() => setOpenButton(false)} />}
+        
+        <ModalButtonPlacement>
+            <ModalButton src={openButton === false ? "assets/imgs/plus.png" : null} name="modal" onClick={() => setOpenButton(true)}></ModalButton>
+        </ModalButtonPlacement>
+    </BoardPosition>
    
     );
 }
