@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Navbar from '../components/Navbar';
 import Notes from '../components/Notes';
 import BackButton from '../components/BackButton';
+import PlusButton from '../components/PlusButton';
 import styled from 'styled-components';
 import Modal from '../components/Modal';
 import { firestore } from 'firebase';
@@ -42,6 +43,7 @@ const ModalButton = styled.img`
     cursor: pointer;
     margin-bottom: 50px;
     visibility: hidden;
+    fill: var(--main-font-color);
     // position: absolute;
 
     @media screen and (max-width: 768px) {
@@ -49,11 +51,17 @@ const ModalButton = styled.img`
     }
 `;
 
+const H2Position = styled.div`
+    width: 100%;
+    display: flex; 
+    justify-content: center;
+    flex-direction: row;
+`;
 const H2 = styled.h2`
     font-family: 'Happy Monkey', sans-serif;
     position: fixed;
-    top: 1%;
-    left: 50%;
+    top: 4%;
+    // left: 50%;
     z-index: 5;
 `;
 
@@ -72,16 +80,17 @@ const Board = (props) => {
     
     return (
         <>
-            {/* <BackButton img="../assets/imgs/left.png"/> */}
+            <BackButton />
             <Navbar backgroundColor="var(--main-div-color)"/> 
-
-            <H2>{currentBoardId}</H2>
+            <H2Position>
+                <H2>{currentBoardId}</H2>
+            </H2Position>
                 <Notes boardId={currentBoardId} />
       
-            {openButton && <Modal openButton='false' onClose={() => setOpenButton(false)} />}
+            {openButton && <Modal onClose={() => setOpenButton(false)} />}
 
             <ModalButtonPlacement>
-                <ModalButton src={openButton === false ? "../assets/imgs/plus.png" : null} name="modal" onClick={() => setOpenButton(true)}></ModalButton>
+                <PlusButton src={openButton === false ? '../assets/imgs/plus.svg' : null} name="modal" onClick={() => setOpenButton(true)}></PlusButton>
             </ModalButtonPlacement>
         </>
     )
