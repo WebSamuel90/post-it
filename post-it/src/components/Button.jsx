@@ -28,7 +28,7 @@ const Button = (props) => {
                 <ButtonStyled {...props}>
                     {props.name}
                 </ButtonStyled>
-         );
+        );
     }
 
 export default Button;

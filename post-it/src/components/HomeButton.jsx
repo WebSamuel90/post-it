@@ -26,11 +26,11 @@ const ButtonStyled = styled.div `
 
 const HomeButton = (props) => {
 
-        return ( 
-                <ButtonStyled {...props}>
-                    {props.name}
-                </ButtonStyled>
-         );
-    }
+    return ( 
+        <ButtonStyled {...props}>
+            {props.name}
+        </ButtonStyled>
+    );
+}
 
 export default HomeButton;

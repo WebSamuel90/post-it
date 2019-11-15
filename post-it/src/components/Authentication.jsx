@@ -4,11 +4,11 @@ import SignInAndSignUp from './SignInAndSignUp';
 import { UserContext } from '../providers/UserProvider';
 
 const Authentication = ({ loading }) => {
-  const user = useContext(UserContext);
+	const user = useContext(UserContext);
   
-    if (loading) return null;
+	if (loading) return null;
 
-  return <div>{user ? <CurrentUser /> : <SignInAndSignUp />}</div>;
+	return <div>{user ? <CurrentUser /> : <SignInAndSignUp />}</div>;
 };
 
 export default Authentication;

@@ -118,26 +118,25 @@ const Home = () => {
     }
 
     return (
-            <>
-                <WrapperStyled>
-                    <ImgPlacement>
-                        <ImgStyled src="assets/imgs/information.svg"></ImgStyled>
-                        <ImgStyled src="assets/imgs/user.svg"></ImgStyled>
-                    </ImgPlacement>
-                    <H1>Stick.IT!</H1>
-                    <HostPlacement>
-                        <InputStyled 
-                            placeholder='Enter code'
-                            onChange={handleChange}
-                            type='text'
-                        />
-                        <Link to={joinBoard !== '' ? `board/${joinBoard}` : '/'}><HomeButton onClick={handleJoin} name="Join Board" color='#cdffcd'/></Link>
-                    </HostPlacement>
-                    <Link to={`/board/${pageId}`}><HomeButton onClick={handleCreate} name="Create Board" color='#ccccff' marginBottom="50px" /></Link>
-                </WrapperStyled>
-            </>
-        
-        );
-    }
+        <>
+            <WrapperStyled>
+                <ImgPlacement>
+                    <ImgStyled src="assets/imgs/information.svg"></ImgStyled>
+                    <ImgStyled src="assets/imgs/user.svg"></ImgStyled>
+                </ImgPlacement>
+                <H1>Stick.IT!</H1>
+                <HostPlacement>
+                    <InputStyled 
+                        placeholder='Enter code'
+                        onChange={handleChange}
+                        type='text'
+                    />
+                    <Link to={joinBoard !== '' ? `board/${joinBoard}` : '/'}><HomeButton onClick={handleJoin} name="Join Board" color='#cdffcd'/></Link>
+                </HostPlacement>
+                <Link to={`/board/${pageId}`}><HomeButton onClick={handleCreate} name="Create Board" color='#ccccff' marginBottom="50px" /></Link>
+            </WrapperStyled>
+        </>   
+    );
+}
 
 export default Home;

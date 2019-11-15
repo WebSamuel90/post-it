@@ -45,9 +45,7 @@ const MemberAddNote = () => {
                     {/* <ModalButton onClick={() => setOpenButton(true)}></ModalButton>  */}
                     <ModalButton src={openButton === false ? "assets/imgs/plus.svg" : null} name="modal" onClick={() => setOpenButton(true)}  ></ModalButton>
                 </WrapperStyled>
-            
             </>
-        
         );
     }
 
