@@ -9,17 +9,13 @@ const NoteStyled = styled.div`
     padding: 15px 25px;
     box-shadow: 2px 4px 6px #444;
     background-color: ${props => props.postitColor};
-    height:10em;
-    width:10em;
-    padding:1em;
+    height: 8em;
+    width: 8em;
+    padding: 1em;
     margin: 10px;
     cursor: pointer;
     position: absolute;
-
-    // @media screen and (max-width: 768px) {
-    //     height: 50px;
-    //     width: 50px;
-    // }
+    overflow: hidden;
 `;
 
 const ButtonPlacement = styled.div`
@@ -44,14 +40,24 @@ const ContentPlacement = styled.div`
     width: 100%;
     height: 100%;
     display: flex; 
+    flex-direction: row;
     margin-left: 20px;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+    
 
     p {
         color: #333;
         font-family: 'Happy Monkey', sans-serif;
-    }
+        text-align: center;
+        // overflow-y: scroll;
+        // box-sizing: border-box;
+        overflow-wrap: break-word
+        margin-left: 25px;
+        white-space: wrap;
+        width: 100%;
+
 `;
 
 const LikePlacement = styled.div`

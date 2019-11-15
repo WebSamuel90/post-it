@@ -68,13 +68,13 @@ const NavbarLink = (props) => {
 
             <LiStyled>Members
                 <InputStyled type='checkbox' className="button"></InputStyled>
-                <ArrowDown color="var(--main-font-color" height="20" width="20"/>
-                
-                <MembersUl>
+                <ArrowDown />
+
+                {/* <MembersUl>
                     <li>1</li>
                     <li>2</li>
                     <li>3</li>
-                </MembersUl>
+                </MembersUl> */}
             </LiStyled>
             <Line />
         </>
