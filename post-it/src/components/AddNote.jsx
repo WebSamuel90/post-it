@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { firestore, auth } from '../firebase';
+import { firestore } from '../firebase';
 import styled from 'styled-components';
 import ContentEditable from 'react-contenteditable';
 import sanitizeHtml from "sanitize-html";
@@ -65,6 +65,8 @@ const AddNote = (props) => {
         flexWrap: 'wrap',
         resize: 'none',
         outline: 'none',
+        fontFamily: 'Happy Monkey',
+        fontSize: '18px',
     }
 
     const sanitize = () => {

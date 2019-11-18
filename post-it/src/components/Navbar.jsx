@@ -5,9 +5,6 @@ import AddNote from './AddNote';
 import NavbarLink from './NavbarLink';
 import '../DarkMode.css'
 import { QRCode } from "react-qr-svg";
-import Authentication from './Authentication';
-
-
 
 const MenuWrap = styled.div`
     position: fixed;
@@ -148,13 +145,6 @@ const QRPosition = styled.div`
     width: 100%;
     display: flex; 
     justify-content: center;
-
-`;
-
-const QR = styled.div`
-    height: 100px;
-    width: 100px;
-    border: 1px solid red;
 `;
 
 function Navbar (props) {
