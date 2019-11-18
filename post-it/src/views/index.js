@@ -88,7 +88,7 @@ const Home = () => {
     const [insertId, setInsertId] = useState();
     const [joinBoard, setJoinBoard] = useState('');
 
-    const [value, loading, error] = useCollection(
+    const [value] = useCollection(
         firestore.collection('boards')
     );
 

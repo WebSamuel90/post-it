@@ -42,7 +42,7 @@ const ContentPlacement = styled.div`
     display: flex; 
     flex-direction: row;
     margin-left: 20px;
-    flex-wrap: wrap;
+    // flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     
@@ -50,6 +50,7 @@ const ContentPlacement = styled.div`
     p {
         color: #333;
         font-family: 'Happy Monkey', sans-serif;
+        font-size: 18px;
         text-align: center;
         // overflow-y: scroll;
         // box-sizing: border-box;

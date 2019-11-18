@@ -9,23 +9,6 @@ import { firestore } from 'firebase';
 import { withRouter } from 'react-router-dom';
 import { useDocument } from 'react-firebase-hooks/firestore';
 
-const BoardStyled = styled.div`
-    width: 1500px;
-    height: 1000px;
-    // transform: perspective(200px) translate3d(0, 0, -100em);
-`;
-
-const NavBoardStyled = styled.div`
-    position: fixed;
-    top: 25px;
-    left: 50%;
-    z-index: 5;
-
-    @media screen and (max-width: 768px) {
-
-    }
-`;
-
 const ModalButtonPlacement = styled.div`
     width: 100%;
     display: flex; 
@@ -35,20 +18,6 @@ const ModalButtonPlacement = styled.div`
     top: 90%;
     align-items: center;
     // margin-bottom: 50px;
-`;
-
-const ModalButton = styled.img`
-    height: 40px;
-    width: 40px;
-    cursor: pointer;
-    margin-bottom: 50px;
-    visibility: hidden;
-    fill: var(--main-font-color);
-    // position: absolute;
-
-    @media screen and (max-width: 768px) {
-        visibility: visible;
-    }
 `;
 
 const H2Position = styled.div`
@@ -71,7 +40,7 @@ const Board = (props) => {
 
     const getBoardId = props.match.params.id;
     
-    const [value, loading, error] = useDocument(
+    const [value] = useDocument(
         firestore().doc(`boards/${getBoardId}`)
     );
     
@@ -81,18 +50,16 @@ const Board = (props) => {
     return (
         <>
             <BackButton />
-            <Navbar backgroundColor="var(--main-div-color)"/> 
             <H2Position>
                 <H2>{currentBoardId}</H2>
             </H2Position>
-            {/* <BackButton img="../assets/imgs/left.png"/> */}
             <Navbar boardId={currentBoardId} backgroundColor="var(--main-div-color)"/> 
             <Notes boardId={currentBoardId} />
       
             {openButton && <Modal onClose={() => setOpenButton(false)} />}
 
             <ModalButtonPlacement>
-                <PlusButton src={openButton === false ? '../assets/imgs/plus.svg' : null} name="modal" onClick={() => setOpenButton(true)}></PlusButton>
+                <PlusButton name="modal" onClick={() => setOpenButton(true)}></PlusButton>
             </ModalButtonPlacement>
         </>
     )

@@ -9,11 +9,11 @@ const SignUp = () => {
     const handleSubmit = async e => {
         e.preventDefault();
 
-        const user = {
-            displayName,
-            email,
-            password
-        }
+        // const user = {
+        //     displayName,
+        //     email,
+        //     password
+        // }
 
         try {
             const { user } = await auth.createUserWithEmailAndPassword(email, password);

@@ -20,28 +20,6 @@ const LiStyled = styled.li`
     // padding: 1rem;
 `;
 
-const MembersUl = styled.ul`
-    display: none;
-    opacity: 0;
-    position: absolute;
-    border: 1px solid black;
-    width: 140px;
-    height: 130px;
-    margin-top: 25px;
-    line-height: 40px;
-    background-color: #fff;
-    text-decoration: none;
-    
-    li {
-        margin: 0;
-        padding: 0 1em;
-        width: 30vw;
-        text-align: start;
-        list-style: none;
-        color: #333;
-    }
-`;
-
 const InputStyled = styled.input`
     position: absolute;
     z-index: 2;

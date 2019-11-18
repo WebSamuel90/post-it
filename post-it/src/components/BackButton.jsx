@@ -35,11 +35,6 @@ const LiStyled = styled.li`
     list-style: none;
 `;
 
-const ImgStyled = styled.img `
-    height: 29px;
-`;
-
-
 const BackButton = (props) => {
     return (
         <>
