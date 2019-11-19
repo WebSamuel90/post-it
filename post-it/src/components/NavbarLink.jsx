@@ -37,7 +37,7 @@ const NavbarLink = (props) => {
                 <LiStyled>Home</LiStyled>
             </Link>
             <Line />
-            <LiStyled>Dark Mode
+            <LiStyled>Color Mode
                 <ToggleButton />
             </LiStyled>
             <Line />
